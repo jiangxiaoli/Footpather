@@ -1,1 +1,5 @@
 /* Empty. Add your own CSS if you like */
+.slider {
+  min-height: 90% !important;
+  height: 90% !important;
+}

@@ -35,7 +35,21 @@ angular.module('app.service.map', [])
           col: Math.floor(x * scale / TILE_SIZE),
           row: Math.floor(y * scale / TILE_SIZE)
         }
+      },
+
+      /**
+       * Get street view image by latitude, longitude
+       * @param lat
+       * @param lng
+       * @returns {{url: string }}
+       */
+      getStreetView: function (lat, lng) {
+        var width = 600;
+        var height = 400;
+        var url = "https://maps.googleapis.com/maps/api/streetview?size="+width+"x"+height+"&location="+lat+","+lng;
+        return url;
       }
+
     };
   }
 );

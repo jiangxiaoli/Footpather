@@ -1,1 +1,36 @@
 /* Empty. Add your own CSS if you like */
+
+/* home page */
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll {
+  height: 100%;
+}
+
+
+#find-me-btn {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
+
+#help-me-btn {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+}
+
+#report-btn {
+  position: absolute;
+  top: 85%;
+  left: 5%;
+}
+
+#navigate-btn {
+  position: absolute;
+  top: 85%;
+  right: 5%;
+}

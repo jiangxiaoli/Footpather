@@ -1,3 +1,16 @@
 <ion-view title="Home">
-  home test page!!
+
+  <map center="current-location" zoom="14" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}">
+
+    <!--buttons-->
+    <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
+    <button id="help-me-btn" ng-click="" class="button icon-left ion-alert button-assertive">HELP ME!</button>
+    <button id="report-btn" ng-click="" class="button icon-left ion-speakerphone button-stable">Report</button>
+    <button id="navigate-btn" ng-click="" class="button icon-left ion-map button-stable">Navigate</button>
+
+    <marker position="current-location" title="Hello World!"></marker>
+
+    <!--<img ng-src="{{streetViewUrl}}">-->
+
+  </map>
 </ion-view>

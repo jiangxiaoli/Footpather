@@ -5,7 +5,7 @@
 var request = require('request');
 
 module.exports = {
-    getCrimeReports: function(row, col, start, end, ids, callback) {
+    getCrimeReports: function(row, col, start, end, ids, zoom, callback) {
 
         /**
          * incident type id:
@@ -29,7 +29,8 @@ module.exports = {
             "&incident_type_ids=" + ids +
             "&row=" + row +
             "&column=" + col +
-            "&zoom=14&include_sex_offenders=true";
+            "&zoom=" + zoom +
+            "&include_sex_offenders=true";
 
         request.get(url,
             function (error, response, body) {

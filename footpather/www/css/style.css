@@ -34,3 +34,8 @@
   top: 85%;
   right: 5%;
 }
+
+.slider {
+  min-height: 90% !important;
+  height: 90% !important;
+}

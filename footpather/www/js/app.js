@@ -55,4 +55,11 @@ angular.module('app', ['ionic','ngMap',
       StatusBar.styleDefault();
     }
   });
+})
+.controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
+
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
 });

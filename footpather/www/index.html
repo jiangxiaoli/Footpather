@@ -37,16 +37,47 @@
     <script src="js/controller/report.js"></script>
   </head>
 
-  <body ng-app="app">
+  <body ng-app="app" ng-controller="MainCtrl">
 
-    <!--
-    The nav bar that will be updated as we navigate between views.
-    -->
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-    </ion-nav-bar>
+    <!--side menu, only one page, no navbar, using header-->
+    <ion-side-menus>
 
-    <ion-nav-view></ion-nav-view>
+      <ion-side-menu-content>
+        <ion-header-bar class="bar-stable">
+          <button class="button button-icon ion-navicon" ng-click="toggleLeft()" ng-hide="$exposeAside.active"></button>
+          <h1 class="title">Footpather</h1>
+        </ion-header-bar>
+
+        <!--home page content goes here-->
+        <ion-nav-view></ion-nav-view>
+
+      </ion-side-menu-content>
+
+      <!--side menu content-->
+      <ion-side-menu expose-aside-when="large">
+        <ion-header-bar class="bar-dark">
+          <h1 class="title">My Footpather</h1>
+        </ion-header-bar>
+        <ion-content>
+          <div id="side-avatar">
+            <img id="side-avatar-img" src="/img/avatars/1.png" alt="" width="60px"/>
+            <h4>Lily Jiang</h4>
+          </div>
+          <div class="list">
+            <div class="item">
+              My Profile
+            </div>
+            <div class="item">
+              Settings
+            </div>
+            <div class="item">
+              Logout
+            </div>
+          </div>
+        </ion-content>
+      </ion-side-menu>
+
+    </ion-side-menus>
+
   </body>
 </html>

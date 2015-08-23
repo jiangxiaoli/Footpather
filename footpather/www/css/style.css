@@ -1,6 +1,22 @@
 /* Empty. Add your own CSS if you like */
 
-/* home page */
+/*** sidebar ***/
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+/*** sidebar ***/
+#side-avatar {
+  text-align: center;
+  margin: 20px;
+}
+
+#side-avatar-img {
+  width: 30%;
+  margin: 10px;
+}
+
+/*** home page ***/
 #map {
   width: 100%;
   height: 100%;
@@ -9,7 +25,6 @@
 .scroll {
   height: 100%;
 }
-
 
 #find-me-btn {
   position: absolute;
@@ -35,6 +50,7 @@
   right: 5%;
 }
 
+/*** welcome page ***/
 .slider {
   min-height: 90% !important;
   height: 90% !important;

@@ -5,15 +5,26 @@
 var Tile = require('./models/tile');
 
 module.exports = {
-    addReport: function(report, callback) {
-
+    getTile: function(coords, callback) {
+        Tile.findOne(coords, callback);
     },
 
-    updateReport: function(report, newValue, callback) {
-
+    addTile: function(tile, callback) {
+        new Tile(tile).save(callback);
     },
 
-    getReports: function(col, row, callback) {
+    addReport: function(coords, report, callback) {
+        Tile.findOneAndUpdate(coords,
+            {
+                $push: {
+                    reports: report
+                }
+            },
+            {new: true},
+            callback);
+    },
+
+    updateReport: function(tileId, report, newValue, callback) {
 
     }
 };

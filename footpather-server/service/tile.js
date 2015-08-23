@@ -1,6 +1,7 @@
 /**
  * Created by lan on 8/22/15.
  */
+var tiledb = require('../dao/tile');
 
 module.exports = {
 
@@ -29,6 +30,24 @@ module.exports = {
             col: Math.floor(x * scale / TILE_SIZE),
             row: Math.floor(y * scale / TILE_SIZE)
         }
+    },
+
+    addReportToTile: function(report, callback) {
+        var tileCoords = this.getTileCoords(report.latitude, report.longitude, 14);
+        report.date = new Date();
+        report.likes = 0;
+
+        tiledb.addReport(tileCoords, report, function(err, tile){
+            if(err) callback(err);
+            else if(tile == null) {
+                tiledb.addTile({
+                    row: tileCoords.row,
+                    col: tileCoords.col,
+                    reports: [report]
+                }, callback)
+            }
+            else callback(null, tile);
+        });
     },
 
     getNearByTiles: function(row, col) {

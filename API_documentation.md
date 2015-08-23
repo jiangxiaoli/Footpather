@@ -20,3 +20,17 @@
   "longitude": -121.9939066
 }
 ```
+
+## REPORT API
+### add report
+* **uri:** /tile/report
+* **method:** post
+* **request_body:**
+```
+{
+  "latitude": 38.308856,
+  "longitude": -123.9939046,
+  "type": "theft",
+  "description": "more details"
+}
+```

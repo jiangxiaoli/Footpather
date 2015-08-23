@@ -1,6 +1,7 @@
 # developher
 
 ## Setup
+0. install cordova and ionic: ```npm install -g cordova ionic```
 1. clone this repository
 2. ```cd footpather```
 3. ```bower install```

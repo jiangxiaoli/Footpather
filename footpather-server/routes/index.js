@@ -19,7 +19,7 @@ router.get('/crimereports', function(req, res, next) {
     var end = req.query.end;    //2015/08/18
     var ids = req.query.ids;    //104,100,98,103,99,101,170,8,97,148,9,149,150
 
-    crimeReportService.getCrimeReports(row, col, start, end, ids, function(err, response) {
+    crimeReportService.getCrimeReports(row, col, start, end, ids, 14, function(err, response) {
         if(err) res.send(err);
         else res.json(response);
     });

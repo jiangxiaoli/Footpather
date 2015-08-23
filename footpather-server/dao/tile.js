@@ -2,7 +2,7 @@
  * Created by lan on 8/22/15.
  * DB operations for tile.
  */
-var Tile = require('models/tile.js');
+var Tile = require('./models/tile');
 
 module.exports = {
     addReport: function(report, callback) {

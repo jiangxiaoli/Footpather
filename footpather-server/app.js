@@ -5,6 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+/**
+ * Mongodb connection set up
+ */
+var mongoose = require("mongoose");
+mongoose.connect('mongodb://admin:admin@ds035563.mongolab.com:35563/heroku_ckz2mmp1');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var tiles = require('./routes/tiles');
@@ -24,8 +30,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/tiles', tiles);
+app.use('/user', users);
+app.use('/tile', tiles);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

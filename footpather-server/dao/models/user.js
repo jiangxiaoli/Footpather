@@ -8,8 +8,8 @@ var mongoose = require('mongoose'),
 var userSchema = new Schema({
     icon: String,
     user_name: String,
-    latitude: String,
-    longitude: String,
+    latitude: Number,
+    longitude: Number,
     row: {type: Number, index: true},
     col: {type: Number, index: true}
 });

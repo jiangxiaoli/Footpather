@@ -1,0 +1,28 @@
+<ion-view title="Test">
+  <ion-content style="padding-left: 20px">
+
+  <div>
+    <label>Latitude</label>
+  <input type="text" placeholder="latitude" ng-model="lat">
+    <label>Longitude</label>
+  <input type="text" placeholder="longitude" ng-model="lng">
+
+  <a class="button button-default" ng-click="getNearByUsers(lat, lng)">Get Nearby Users</a>
+
+  <a class="button button-default" ng-click="getNearByReports(lat, lng)">Get Nearby Reports</a>
+
+  <a class="button button-default" ng-click="getNearByCrimeReports(lat, lng)">Get Nearby Crime Reports</a>
+
+  </div>
+
+  <div ng-if="users">
+    Users: {{users}}
+  </div>
+  <div ng-if="reports">
+    Reports: {{reports}}
+  </div>
+  <div ng-if="crimereports">
+    Crime Reports: {{crimereports}}
+  </div>
+  </ion-content>
+</ion-view>

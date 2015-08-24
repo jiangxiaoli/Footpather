@@ -8,6 +8,7 @@ angular.module('app', ['ionic','ngMap',
   'app.controller.welcome',
   'app.controller.navigate',
   'app.controller.report',
+  'app.controller.testonly',
   'app.service.user',
   'app.service.tile',
   'app.service.map',
@@ -38,6 +39,12 @@ angular.module('app', ['ionic','ngMap',
       url: "/report",
       templateUrl: "template/report.html",
       controller: 'ReportCtrl'
+    })
+
+    .state('test', {
+      url: "/test",
+      templateUrl: "template/testonly.html",
+      controller: 'TestCtrl'
     });
 
 

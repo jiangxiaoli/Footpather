@@ -1,28 +1,78 @@
 <ion-view title="Test">
-  <ion-content style="padding-left: 20px">
+  <ion-content>
 
-  <div>
-    <label>Latitude</label>
-  <input type="text" placeholder="latitude" ng-model="lat">
-    <label>Longitude</label>
-  <input type="text" placeholder="longitude" ng-model="lng">
+    <!--add report-->
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Type</span>
+        <input type="text" placeholder="Type" ng-model="report.type">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Description</span>
+        <input type="text" placeholder="Description" ng-model="report.description">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Latitude</span>
+        <input type="text" placeholder="Latitude" ng-model="report.latitude">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Longitude</span>
+        <input type="text" placeholder="Longitude" ng-model="report.longitude">
+      </label>
+      <button class="button button-block button-positive" ng-click="addReport(report)">
+        Add Report
+      </button>
+    </div>
 
-  <a class="button button-default" ng-click="getNearByUsers(lat, lng)">Get Nearby Users</a>
+    <!--add user-->
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Icon</span>
+        <input type="text" placeholder="Icon" ng-model="user.icon">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">User Name</span>
+        <input type="text" placeholder="Name" ng-model="user.user_name">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Latitude</span>
+        <input type="text" placeholder="Latitude" ng-model="currentloc.latitude">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Longitude</span>
+        <input type="text" placeholder="Longitude" ng-model="currentloc.longitude">
+      </label>
+      <button class="button button-block button-positive" ng-click="addUser(user, currentloc)">
+        Add User
+      </button>
+    </div>
 
-  <a class="button button-default" ng-click="getNearByReports(lat, lng)">Get Nearby Reports</a>
+    <!--get nearby data-->
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Latitude</span>
+        <input type="text" placeholder="latitude" ng-model="lat">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Longitude</span>
+        <input type="text" placeholder="longitude" ng-model="lng">
+      </label>
 
-  <a class="button button-default" ng-click="getNearByCrimeReports(lat, lng)">Get Nearby Crime Reports</a>
+      <a class="button button-default" ng-click="getNearByUsers(lat, lng)">Get Nearby Users</a>
+      <a class="button button-default" ng-click="getNearByReports(lat, lng)">Get Nearby Reports</a>
+      <a class="button button-default" ng-click="getNearByCrimeReports(lat, lng)">Get Nearby Crime Reports</a>
 
-  </div>
+    </div>
 
-  <div ng-if="users">
-    Users: {{users}}
-  </div>
-  <div ng-if="reports">
-    Reports: {{reports}}
-  </div>
-  <div ng-if="crimereports">
-    Crime Reports: {{crimereports}}
-  </div>
+    <!--display result-->
+    <div class="card" ng-if="users">
+      Users: {{users}}
+    </div>
+    <div class="card" ng-if="reports">
+      Reports: {{reports}}
+    </div>
+    <div class="card" ng-if="crimereports">
+      Crime Reports: {{crimereports}}
+    </div>
   </ion-content>
 </ion-view>

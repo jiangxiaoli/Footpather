@@ -23,7 +23,7 @@ angular.module('app.service.tile', [])
        * @returns {HttpPromise}
        */
       submitReport: function(report) {
-        return $http.post(host + 'report', report);
+        return $http.post(host + 'tile/report', report);
       },
 
       /**

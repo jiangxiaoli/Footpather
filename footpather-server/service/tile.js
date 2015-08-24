@@ -2,6 +2,9 @@
  * Created by lan on 8/22/15.
  */
 var tiledb = require('../dao/tile');
+var userdb = require('../dao/user');
+var crimereport = require('./crime_report');
+var async = require('async');
 
 module.exports = {
 
@@ -51,18 +54,76 @@ module.exports = {
     },
 
     getNearByTiles: function(row, col) {
-
+        // return 9 tiles with the current tile in middle
+        var tiles = [];
+        var r = row - 1;
+        var c = col - 1;
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                tiles.push({
+                    row: r + i,
+                    col: c + j
+                });
+            }
+        }
+        console.log("current: " + row + ", " + col);
+        console.log("nearby: " + JSON.stringify(tiles, null, 4));
+        return tiles;
     },
 
-    getReportsByTile: function(row, col, callback) {
-
+    getReportsByTiles: function(coordsList, callback) {
+        async.map(coordsList, function(coords, cb) {
+            tiledb.getTile(coords, function(err, tile){
+                if(err) cb(err);
+                else if(tile != null) cb(null, tile.reports);
+                else cb(null, []);
+            });
+        }, function(err, results) {
+            callback(err, [].concat.apply([], results));
+        });
     },
 
-    getCrimesByTile: function(row, col, callback) {
+    getCrimesByTiles: function(coordsList, callback) {
+        var crimes = [];
+        var offenders = [];
+        async.each(coordsList, function(coords, cb) {
+            crimereport.get(coords.row, coords.col, 14,
+                "2015/08/01", "2015/08/24",
+                "104,100,98,103,99,101,170,8,97,148,9,149,150",
+                function(err, reports){
+                    if(err) cb(err);
+                    else {
+                        crimes.push(reports.crimes);
+                        offenders.push(reports.offenders);
+                        cb();
+                    }
+                }
+            );
 
+        }, function(err) {
+            if(err) callback(err);
+            else {
+                callback(null, {
+                    crimes: [].concat.apply([], crimes),
+                    offenders: [].concat.apply([], offenders)
+                });
+            }
+        })
     },
 
-    getUsersByTile: function(row, col, callback) {
+    getUsersByTiles: function(coordsList, callback) {
+        async.map(coordsList, function(coords, cb) {
+            userdb.getUsers(coords, function(err, users){
+                if(err) cb(err);
+                else if(users != null) cb(null, users);
+                else cb(null, []);
+            });
+        }, function(err, results) {
+            callback(err, [].concat.apply([], results));
+        });
+    },
+
+    getAllDataByTiles: function(coordsList, callback) {
 
     }
 };

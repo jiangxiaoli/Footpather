@@ -5,7 +5,7 @@
 var request = require('request');
 
 module.exports = {
-    getCrimeReports: function(row, col, start, end, ids, zoom, callback) {
+    get: function(row, col, zoom, start, end, ids, callback) {
 
         /**
          * incident type id:

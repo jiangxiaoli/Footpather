@@ -5,6 +5,10 @@
 var User = require('./models/user');
 
 module.exports = {
+    getUsers: function(coords, callback) {
+        User.find(coords, callback);
+    },
+
     addUser: function(user, callback) {
         new User(user).save(callback);
     },

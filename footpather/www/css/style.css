@@ -55,8 +55,8 @@ body {
 
 /*** welcome page ***/
 .slider {
-  min-height: 90% !important;
-  height: 90% !important;
+  min-height: 70% !important;
+  height: 70% !important;
 }
 
 div.logo {
@@ -67,6 +67,6 @@ div.logo {
   margin: 5% auto;
 }
 
-div.skip {
+div.btn-row {
   margin-top: 10%;
 }

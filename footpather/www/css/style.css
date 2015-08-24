@@ -26,27 +26,30 @@ body {
   height: 100%;
 }
 
-#find-me-btn {
-  position: absolute;
-  top: 10%;
-  right: 5%;
-}
-
-#help-me-btn {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-}
-
+#find-me-btn,
+#help-me-btn,
+#navigate-btn,
 #report-btn {
   position: absolute;
-  top: 85%;
+}
+
+#find-me-btn,
+#help-me-btn {
+  top: 10%;
+}
+
+#report-btn,
+#navigate-btn {
+  bottom: 5%
+}
+
+#help-me-btn,
+#report-btn {
   left: 5%;
 }
 
+#find-me-btn,
 #navigate-btn {
-  position: absolute;
-  top: 85%;
   right: 5%;
 }
 

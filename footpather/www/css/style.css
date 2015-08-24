@@ -58,3 +58,15 @@ body {
   min-height: 90% !important;
   height: 90% !important;
 }
+
+div.logo {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+  margin: 5% auto;
+}
+
+div.skip {
+  margin-top: 10%;
+}

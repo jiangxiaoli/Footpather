@@ -4,23 +4,50 @@
   </div>
 
   <ion-slide-box class="has-header" on-slide-changed="slideHasChanged($index)">
-    <ion-slide>
-      <h1 class="text-center">Welcome to Footpather!</h1>
-      <div id="logo" class="text-center">
-        <img src="" height="150" width="150" alt="Put logo here">
-      </div>
 
-      <p class="text-center">
-        Your community-based safety assistant
-      </p>
-      <p class="text-center">
-        Empowering each other to get home safe
-      </p>
+    <ion-slide>
+      <div class="padding">
+        <h2 class="text-center positive">Welcome to Footpather!</h2>
+
+        <div class="logo box text-center">
+          Logo
+        </div>
+
+        <h4 class="text-center">Your <span class="assertive">community-based</span> safety assistant</h4>
+        <h4 class="text-center"><span class="royal">Empowering</span> each other to get home safe</h4>
+
+        <div class="row skip">
+          <div class="col text-center">
+            <a class="button button-stable" href="#/home">
+              Skip Intro
+            </a>
+          </div>
+        </div>
+
+      </div>
     </ion-slide>
 
     <ion-slide>
-      <div class="box">
-        <h1>This is page 2 of tutorial</h1>
+      <div class="list card">
+        <div class="item positive-bg">
+          <span class="light">Footpather Can:</span>
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-ios-location"></i>
+          Show Crime Reports Near You
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-alert-circled"></i>
+          Report Nearby Suspicious / Dangerous Activity
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-speakerphone"></i>
+          Call for Help
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-map"></i>
+          Provide Routing
+        </div>
       </div>
     </ion-slide>
 
@@ -29,6 +56,7 @@
         <h1>This is page 3 of tutorial</h1>
       </div>
     </ion-slide>
+
   </ion-slide-box>
 
 </ion-view>

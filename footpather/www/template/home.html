@@ -1,6 +1,6 @@
 <ion-view title="Home">
 
-  <map center="current-location" zoom="14" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}">
+  <map center="current-location" zoom="16" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}">
 
     <!--buttons-->
     <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
@@ -8,9 +8,34 @@
     <button id="report-btn" ng-click="" class="button icon-left ion-speakerphone button-stable">Report</button>
     <button id="navigate-btn" ng-click="" class="button icon-left ion-map button-stable">Navigate</button>
 
-    <marker position="current-location" title="Hello World!"></marker>
+    <!--current locaiton marker-->
+    <marker id="foo" position="current-location"></marker>
+    <!--info window test-->
+    <!--<info-window id="bar" max-width="200" visible-on-marker="foo">-->
+      <!--<div ng-non-bindable="">-->
+        <!--<div id="siteNotice"></div>-->
+        <!--<h5 id="firstHeading" class="firstHeading">Crime</h5>-->
+        <!--<div id="bodyContent">-->
+          <!--<img ng-src="{{streetViewUrl}}" width="160">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</info-window>-->
 
-    <!--<img ng-src="{{streetViewUrl}}">-->
+    <!--crime markers-->
+    <marker ng-repeat="crime in crimereports.crimes" position="[{{crime.lat}}, {{crime.lng}}]" icon="/img/icons/crime.png">
+    </marker>
+
+    <!--sex offender markers-->
+    <marker ng-repeat="offender in crimereports.offenders" position="[{{offender.lat}}, {{offender.lng}}]" icon="/img/icons/offender.png">
+    </marker>
+
+    <!--report markers-->
+    <marker ng-repeat="report in reports" position="[{{report.latitude}}, {{report.longitude}}]" icon="/img/icons/report.png">
+    </marker>
+
+    <!--user markers-->
+    <marker ng-repeat="user in users" position="[{{user.latitude}}, {{user.longitude}}]" icon="/img/icons/girl.png">
+    </marker>
 
   </map>
 </ion-view>

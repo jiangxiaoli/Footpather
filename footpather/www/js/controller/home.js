@@ -3,7 +3,7 @@
  * Home screen controller to display map info, report/navigate buttons
  */
 angular.module('app.controller.home', [])
-  .controller('HomeCtrl', function($scope, user, tile, map, crimereport, $ionicLoading, $compile){
+  .controller('HomeCtrl', function($scope, user, tile, map, crimereport, $ionicLoading, $compile, $ionicModal, $ionicPopup, $http){
 
     console.log('HomeCtrl loaded');
 
@@ -75,8 +75,9 @@ angular.module('app.controller.home', [])
     function getData(lat, lng){
       //get map center
       getNearByUsers(lat, lng);
-      getNearByCrimeReports(lat, lng);
+      //getNearByCrimeReports(lat, lng);
       getNearByReports(lat, lng);
+      $ionicLoading.hide();
     }
 
     /**
@@ -123,6 +124,49 @@ angular.module('app.controller.home', [])
           alert("Get Nearby Crime Error: " + err);
         });
     }
+
+    //prepare ion-complete for navigate inout, with auto complete address
+    //the selected data is stored in ng-model for each selection
+    $scope.getTestItems = function (query) {
+      var params = {address: query, sensor: false};
+      //need 2 return to pass query to selector
+      return $http.get(
+        'https://maps.googleapis.com/maps/api/geocode/json',
+        {params: params}
+      ).then(function(response) {
+          console.log(response.data.results);
+          var results = response.data.results;
+          var items = [];
+
+          if(results) {
+            for(var i = 0; i < results.length; i++) {
+              var result = results[i];
+              //console.log(result);
+              var item = {};
+              item.location = result.geometry.location;
+              //item.name = "test";
+              item.view = result.formatted_address;
+              items.push(item);
+            }
+          }
+          return items;
+        });
+    };
+
+    //show modal
+    $ionicModal.fromTemplateUrl('templates/navigateModal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    //modal form submit handling- get navigation object, calculate route
+    $scope.calculateNavigation = function(navigate) {
+      console.log(navigate);
+      if(navigate && navigate.from && navigate.to) {
+        //calculate the route
+      }
+    };
 
   }
 );

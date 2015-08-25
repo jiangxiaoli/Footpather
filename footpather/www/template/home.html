@@ -6,7 +6,7 @@
     <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
     <button id="help-me-btn" ng-click="" class="button icon-left ion-alert button-assertive">HELP ME!</button>
     <button id="report-btn" ng-click="" class="button icon-left ion-speakerphone button-stable">Report</button>
-    <button id="navigate-btn" ng-click="" class="button icon-left ion-map button-stable">Navigate</button>
+    <button id="navigate-btn" ng-click="modal.show()" class="button icon-left ion-map button-stable">Navigate</button>
 
     <!--current locaiton marker-->
     <marker id="foo" position="current-location"></marker>
@@ -38,4 +38,43 @@
     </marker>
 
   </map>
+
+  <!--navigate input modal-->
+  <script id="templates/navigateModal.html" type="text/ng-template">
+    <ion-modal-view id="navigateModal">
+      <ion-header-bar class="bar bar-header bar-stable">
+        <h1 class="title">Plan a Footpath</h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+      </ion-header-bar>
+      <ion-content class="padding">
+
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">From</span>
+            <ion-autocomplete ng-model="navigate.from"
+                              item-view-value-key="view"
+                              item-value-key="location"
+                              items-method="getTestItems(query)"
+                              placeholder="Enter your start location..."
+                              items-clicked-method="fromLocSelect(callback)"></ion-autocomplete>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">To</span>
+            <ion-autocomplete ng-model="navigate.to"
+                              item-view-value-key="view"
+                              item-value-key="location"
+                              items-method="getTestItems(query)"
+                              placeholder="Enter your end location..."
+                              items-clicked-method="toLocSelect(callback)"></ion-autocomplete>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Time</span>
+            <input ng-model="navigate.time" type="time">
+          </label>
+          <button class="button button-full button-positive" ng-click="calculateNavigation(navigate)">Start Navigate</button>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+
 </ion-view>

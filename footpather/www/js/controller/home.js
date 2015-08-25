@@ -75,9 +75,9 @@ angular.module('app.controller.home', [])
     function getData(lat, lng){
       //get map center
       getNearByUsers(lat, lng);
-      //getNearByCrimeReports(lat, lng);
+      getNearByCrimeReports(lat, lng);
       getNearByReports(lat, lng);
-      $ionicLoading.hide();
+      //$ionicLoading.hide();
     }
 
     /**
@@ -89,7 +89,6 @@ angular.module('app.controller.home', [])
       tile.getNearByUsers(lat, lng)
         .success(function(res){
           $scope.users = res;
-          console.log($scope.users);
         }).error(function(err){
           alert("Get Nearby User Error: " + err);
         });
@@ -118,7 +117,6 @@ angular.module('app.controller.home', [])
       tile.getNearByCrimeReports(lat, lng)
         .success(function(res){
           $scope.crimereports = res;
-          console.log($scope.crimereports);
           $ionicLoading.hide(); //takes longest time, hide loading after get crimereport complete
         }).error(function(err){
           alert("Get Nearby Crime Error: " + err);
@@ -134,17 +132,14 @@ angular.module('app.controller.home', [])
         'https://maps.googleapis.com/maps/api/geocode/json',
         {params: params}
       ).then(function(response) {
-          console.log(response.data.results);
           var results = response.data.results;
           var items = [];
 
           if(results) {
             for(var i = 0; i < results.length; i++) {
               var result = results[i];
-              //console.log(result);
               var item = {};
               item.location = result.geometry.location;
-              //item.name = "test";
               item.view = result.formatted_address;
               items.push(item);
             }
@@ -160,12 +155,26 @@ angular.module('app.controller.home', [])
       $scope.modal = modal;
     });
 
+    $scope.origin = "";
+    $scope.destination = "";
+    $scope.inNavigate = false;
     //modal form submit handling- get navigation object, calculate route
     $scope.calculateNavigation = function(navigate) {
       console.log(navigate);
       if(navigate && navigate.from && navigate.to) {
         //calculate the route
+        $scope.origin = navigate.from;
+        $scope.destination = navigate.to;
+        $scope.modal.hide();
+        $scope.inNavigate = true;
       }
+    };
+
+    $scope.clearRoute = function () {
+      $scope.origin = "";
+      $scope.destination = "";
+      //how to clear direction
+      $scope.inNavigate = false;
     };
 
   }

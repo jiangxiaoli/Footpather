@@ -6,7 +6,8 @@
     <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
     <button id="help-me-btn" ng-click="" class="button icon-left ion-alert button-assertive">HELP ME!</button>
     <button id="report-btn" ng-click="" class="button icon-left ion-speakerphone button-stable">Report</button>
-    <button id="navigate-btn" ng-click="modal.show()" class="button icon-left ion-map button-stable">Navigate</button>
+    <button id="navigate-btn" ng-click="modal.show()" ng-show="!inNavigate" class="button icon-left ion-map button-stable">Navigate</button>
+    <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-stable">Stop Navigate</button>
 
     <!--current locaiton marker-->
     <marker id="foo" position="current-location"></marker>
@@ -36,6 +37,14 @@
     <!--user markers-->
     <marker ng-repeat="user in users" position="[{{user.latitude}}, {{user.longitude}}]" icon="/img/icons/girl.png">
     </marker>
+
+    <!--route - directions-->
+    <directions
+      panel="directions-panel"
+      travel-mode="WALKING"
+      origin="{{origin}}"
+      destination="{{destination}}">
+    </directions>
 
   </map>
 

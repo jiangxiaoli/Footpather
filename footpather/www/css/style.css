@@ -29,6 +29,7 @@ body {
 #find-me-btn,
 #help-me-btn,
 #navigate-btn,
+#stop-navigate-btn,
 #report-btn {
   position: absolute;
 }
@@ -39,7 +40,8 @@ body {
 }
 
 #report-btn,
-#navigate-btn {
+#navigate-btn,
+#stop-navigate-btn {
   bottom: 5%
 }
 
@@ -49,7 +51,8 @@ body {
 }
 
 #find-me-btn,
-#navigate-btn {
+#navigate-btn,
+#stop-navigate-btn {
   right: 5%;
 }
 

@@ -32,7 +32,7 @@ router.get('/nearby/reports', function(req, res, next) {
 router.get('/nearby/crimereports', function(req, res, next) {
     var coords = tile.getTileCoords(req.query.lat, req.query.lng, 14);
     var coordsNearBy = tile.getNearByTiles(coords.row, coords.col);
-    tile.getCrimesByTiles(coordsNearBy, function(err, reports){
+    tile.getCrimesByTiles(coordsNearBy, req.query.ids, function(err, reports){
         if(err) res.status(400).send("error" + err);
         else res.status(200).json(reports);
     });
@@ -43,6 +43,14 @@ router.post('/report', function(req, res, next) {
     tile.addReportToTile(req.body, function(err, tile){
         if(err) res.status(400).send("error" + err);
         else res.status(201).json(tile);
+    });
+});
+
+// like report
+router.post('/:tileId/report/:id', function(req, res, next) {
+    tile.likeReport(req.params.tileId, req.params.id, function(err, tile){
+        if(err) res.status(400).send("error" + err);
+        else res.status(200).json(tile);
     });
 });
 

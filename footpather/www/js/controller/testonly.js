@@ -9,6 +9,7 @@ angular.module('app.controller.testonly', [])
 
     $scope.lat = 37.337417;
     $scope.lng = -121.976855;
+    $scope.ids = null;
 
     $scope.report = {
       type: 'robbery',
@@ -54,14 +55,14 @@ angular.module('app.controller.testonly', [])
         });
     };
 
-    $scope.getNearByUsers = function(lat, lng) {
-      tile.getNearByUsers(lat, lng)
+    $scope.like = function(tileId, reportId) {
+      tile.likeReport(tileId, reportId)
         .success(function(res){
-          $scope.users = res;
+          alert("Change submitted");
         }).error(function(err){
-          alert("Get Nearby User Error: " + err);
+          alert("Like Report Error: " + err);
         });
-    };
+    }
 
     $scope.getNearByReports = function(lat, lng) {
       tile.getNearByReports(lat, lng)
@@ -72,8 +73,17 @@ angular.module('app.controller.testonly', [])
         });
     };
 
-    $scope.getNearByCrimeReports = function(lat, lng) {
-      tile.getNearByCrimeReports(lat, lng)
+    $scope.getNearByUsers = function(lat, lng) {
+      tile.getNearByUsers(lat, lng)
+        .success(function(res){
+          $scope.users = res;
+        }).error(function(err){
+          alert("Get Nearby User Error: " + err);
+        });
+    };
+
+    $scope.getNearByCrimeReports = function(lat, lng, ids) {
+      tile.getNearByCrimeReports(lat, lng, ids)
         .success(function(res){
           $scope.crimereports = res;
         }).error(function(err){

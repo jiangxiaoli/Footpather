@@ -21,10 +21,20 @@ module.exports = {
                 }
             },
             {new: true},
-            callback);
+            callback
+        );
     },
 
-    updateReport: function(tileId, report, newValue, callback) {
-
+    likeReport: function(tileId, reportId, callback){
+        Tile.findOneAndUpdate(
+            {"_id": tileId, "reports._id": reportId},
+            {
+                "$inc": {
+                    "reports.$.likes": 1
+                }
+            },
+            {new: true},
+            callback
+        );
     }
 };

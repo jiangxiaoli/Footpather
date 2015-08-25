@@ -55,18 +55,23 @@ body {
 
 /*** welcome page ***/
 .slider {
-  min-height: 70% !important;
-  height: 70% !important;
+  min-height: 85% !important;
+  height: 85% !important;
 }
 
-div.logo {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 200px;
-  height: 200px;
-  margin: 5% auto;
+.slider-slide > div {
+  margin: 50% auto;
 }
 
-div.btn-row {
-  margin-top: 10%;
+h1.app-title {
+  font-size: 4em;
+  font-variant: small-caps;
+}
+
+.app-tagline {
+  font-size: 1.2em;
+}
+
+.bar-footer button {
+  width: 48%;
 }

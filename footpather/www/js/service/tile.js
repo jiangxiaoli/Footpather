@@ -27,6 +27,16 @@ angular.module('app.service.tile', [])
       },
 
       /**
+       * like a report and update likes
+       * @param tileId
+       * @param reportId
+       * @returns {HttpPromise}
+       */
+      likeReport: function(tileId, reportId) {
+        return $http.post(host + 'tile/' + tileId + '/report/' + reportId);
+      },
+
+      /**
        * Get nearby user by location
        * @param lat
        * @param lng
@@ -52,8 +62,10 @@ angular.module('app.service.tile', [])
        * @param lng
        * @returns {HttpPromise}
        */
-      getNearByCrimeReports: function(lat, lng){
-        return $http.get(host + 'tile/nearby/crimereports?lat=' + lat + '&lng=' + lng);
+      getNearByCrimeReports: function(lat, lng, ids){
+        var url = host + 'tile/nearby/crimereports?lat=' + lat + '&lng=' + lng;
+        if (ids && ids != "") url += '&ids=' + ids;
+        return $http.get(url);
       }
     }
   }

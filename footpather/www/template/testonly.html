@@ -57,19 +57,28 @@
         <span class="input-label">Longitude</span>
         <input type="text" placeholder="longitude" ng-model="lng">
       </label>
+      <label class="item item-input">
+        <span class="input-label">Types</span>
+        <input type="text" placeholder="types of crimes, e.g. 104,100,98,103,99,101,8,97,148,9,149,150" ng-model="ids">
+      </label>
 
-      <a class="button button-default" ng-click="getNearByUsers(lat, lng)">Get Nearby Users</a>
       <a class="button button-default" ng-click="getNearByReports(lat, lng)">Get Nearby Reports</a>
-      <a class="button button-default" ng-click="getNearByCrimeReports(lat, lng)">Get Nearby Crime Reports</a>
+      <a class="button button-default" ng-click="getNearByUsers(lat, lng)">Get Nearby Users</a>
+      <a class="button button-default" ng-click="getNearByCrimeReports(lat, lng, ids)">Get Nearby Crime Reports</a>
 
     </div>
 
     <!--display result-->
+    <div class="card" ng-if="reports">
+      <div ng-repeat="report in reports">
+        {{report}}
+        <button ng-click="like(report.tile_id, report._id); getNearByReports(lat, lng)">
+          <i class="icon ion-thumbsup">{{report.likes}}</i>
+        </button>
+      </div>
+    </div>
     <div class="card" ng-if="users">
       Users: {{users}}
-    </div>
-    <div class="card" ng-if="reports">
-      Reports: {{reports}}
     </div>
     <div class="card" ng-if="crimereports">
       Crime Reports: {{crimereports}}

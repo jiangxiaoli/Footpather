@@ -53,6 +53,10 @@ module.exports = {
         });
     },
 
+    likeReport: function(tile_id, report_id, callback) {
+        tiledb.likeReport(tile_id, report_id, callback);
+    },
+
     getNearByTiles: function(row, col) {
         // return 9 tiles with the current tile in middle
         var tiles = [];
@@ -75,7 +79,13 @@ module.exports = {
         async.map(coordsList, function(coords, cb) {
             tiledb.getTile(coords, function(err, tile){
                 if(err) cb(err);
-                else if(tile != null) cb(null, tile.reports);
+                else if(tile != null) {
+                    async.map(tile.reports, function(report, cb){
+                        var report = report.toObject();
+                        report.tile_id = tile._id;
+                        cb(null, report);
+                    }, cb);
+                }
                 else cb(null, []);
             });
         }, function(err, results) {
@@ -83,13 +93,20 @@ module.exports = {
         });
     },
 
-    getCrimesByTiles: function(coordsList, callback) {
+    getCrimesByTiles: function(coordsList, ids, callback) {
         var crimes = [];
         var offenders = [];
+
+        var date = new Date();
+        var today = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("/");
+        // start date is one month ago
+        date.setDate(date.getDate() -30);
+        var start = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("/");
+
+        if(!ids) ids = "104,100,98,103,99,101,8,97,148,9,149,150";
         async.each(coordsList, function(coords, cb) {
             crimereport.get(coords.row, coords.col, 14,
-                "2015/08/01", "2015/08/24",
-                "104,100,98,103,99,101,170,8,97,148,9,149,150",
+                start, today, ids,
                 function(err, reports){
                     if(err) cb(err);
                     else {

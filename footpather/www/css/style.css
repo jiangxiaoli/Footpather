@@ -58,18 +58,28 @@ body {
 
 /*** welcome page ***/
 .slider {
-  min-height: 70% !important;
-  height: 70% !important;
+  min-height: 85% !important;
+  height: 85% !important;
 }
 
-div.logo {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 200px;
-  height: 200px;
+.slider-slide > div {
+  margin: 50% auto;
+}
+
+h1.app-title {
+  font-size: 4em;
+  font-variant: small-caps;
+}
+
+.app-tagline {
+  font-size: 1.2em;
+}
+
+.bar-footer a.button {
+  width: 48%;
+}
+
+/*** signup page ***/
+.signup-page h1, .login-page h1 {
   margin: 5% auto;
-}
-
-div.btn-row {
-  margin-top: 10%;
 }

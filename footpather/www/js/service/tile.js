@@ -27,6 +27,16 @@ angular.module('app.service.tile', [])
       },
 
       /**
+       * like a report and update likes
+       * @param tileId
+       * @param reportId
+       * @returns {HttpPromise}
+       */
+      likeReport: function(tileId, reportId) {
+        return $http.post(host + 'tile/' + tileId + '/report/' + reportId);
+      },
+
+      /**
        * Get nearby user by location
        * @param lat
        * @param lng
@@ -50,10 +60,26 @@ angular.module('app.service.tile', [])
        * Get nearby crime reports by location
        * @param lat
        * @param lng
+       * @param ids (if null or empty, then default to "104,100,98,103,99,101,8,97,148,9,149,150")
+       * 104:Homicide
+       * 100:Breaking & Entering
+       * 98:Robbery
+       * 103:Theft
+       * 99:Theft of Vehicle
+       * 101:Theft from Vehicle
+       * 170:Vehicle Recovery
+       * 8:Sexual Offense
+       * 97:Other Sexual Offense
+       * 148:Sexual Assault
+       * 9:Assault
+       * 149:Assault
+       * 150:Assault with Deadly Weapon
        * @returns {HttpPromise}
        */
-      getNearByCrimeReports: function(lat, lng){
-        return $http.get(host + 'tile/nearby/crimereports?lat=' + lat + '&lng=' + lng);
+      getNearByCrimeReports: function(lat, lng, ids){
+        var url = host + 'tile/nearby/crimereports?lat=' + lat + '&lng=' + lng;
+        if (ids && ids != "") url += '&ids=' + ids;
+        return $http.get(url);
       }
     }
   }

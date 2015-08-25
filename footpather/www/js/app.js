@@ -6,6 +6,8 @@
 angular.module('app', ['ionic','ngMap', 'ion-autocomplete',
   'app.controller.home',
   'app.controller.welcome',
+  'app.controller.login',
+  'app.controller.signup',
   'app.controller.navigate',
   'app.controller.report',
   'app.controller.testonly',
@@ -27,6 +29,18 @@ angular.module('app', ['ionic','ngMap', 'ion-autocomplete',
       url: "/welcome",
       templateUrl: "template/welcome.html",
       controller: 'WelcomeCtrl'
+    })
+
+    .state('login', {
+      url: "/login",
+      templateUrl: "template/login.html",
+      controller: 'LoginCtrl'
+    })
+
+    .state('signup', {
+      url: "/signup",
+      templateUrl: "template/signup.html",
+      controller: 'SignupCtrl'
     })
 
     .state('navigate', {

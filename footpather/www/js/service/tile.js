@@ -60,6 +60,20 @@ angular.module('app.service.tile', [])
        * Get nearby crime reports by location
        * @param lat
        * @param lng
+       * @param ids (if null or empty, then default to "104,100,98,103,99,101,8,97,148,9,149,150")
+       * 104:Homicide
+       * 100:Breaking & Entering
+       * 98:Robbery
+       * 103:Theft
+       * 99:Theft of Vehicle
+       * 101:Theft from Vehicle
+       * 170:Vehicle Recovery
+       * 8:Sexual Offense
+       * 97:Other Sexual Offense
+       * 148:Sexual Assault
+       * 9:Assault
+       * 149:Assault
+       * 150:Assault with Deadly Weapon
        * @returns {HttpPromise}
        */
       getNearByCrimeReports: function(lat, lng, ids){

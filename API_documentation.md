@@ -117,6 +117,63 @@
 }
 ```
 
+### get nearby places
+* **uri:** /tile/nearby/places?lat={}&lng={}&types={}&radius={}
+```
+   @param radius (if null or empty, then default to 500)
+   @param types (if null or empty, then default to 'store')
+   supported types: [https://developers.google.com/places/supported_types]
+   when filter multiple types: type1|type2|...
+```
+* **method:** get
+* **response sample:**
+```
+[
+    {
+        "geometry": {
+            "location": {
+                "lat": 37.337908,
+                "lng": -121.975229
+            }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+        "id": "c9a74e7f6fb7ca4785d065860ffec544929eb719",
+        "name": "Safeway",
+        "opening_hours": {
+            "open_now": true,
+            "weekday_text": []
+        },
+        "photos": [
+            {
+                "height": 256,
+                "html_attributions": [
+                    "<a href=\"https://maps.google.com/maps/contrib/117077121254270343091\">Safeway</a>"
+                ],
+                "photo_reference": "CmRdAAAACVcD2xHCfvATRcbpCxx8g-Zb9RzeCejgDN5RTDhtfrmdRcOD-aT237gVcwWzbzH4v93fasvlO0MbR6fnuWcxEo_ilW64vENaV1ojJgX0jM3xQqOevpKYac8cfEycCCXhEhB2_y7vrJsfkgHMRzeDwRdBGhSIILI-RYzWZphbv5ck2Y3QWUsTyw",
+                "width": 256
+            }
+        ],
+        "place_id": "ChIJfRm1yWbKj4ARf9wIRSVdY64",
+        "price_level": 2,
+        "rating": 4,
+        "reference": "CmRbAAAAw_1h4Cql4wCtCqd3VYOFk_wtYFVpUvuj_fcv1FtI3CC38Rw-bHZoaURmOySx_Pl3jEZvSy8dvZ3vI86wdaZyxYnm1-I1Q8a8qhN-BpctZuVx9CTob0p87Rr2OJ8KeqidEhAl655Q0mOG848qCbmrsXH2GhTBM6-mUWm_x1l_q2gagfABA79BUQ",
+        "scope": "GOOGLE",
+        "types": [
+            "grocery_or_supermarket",
+            "bakery",
+            "pharmacy",
+            "health",
+            "florist",
+            "store",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "vicinity": "2760 Homestead Road, Santa Clara"
+    },
+    ....
+]
+```
 
 ## USER API
 ### add user

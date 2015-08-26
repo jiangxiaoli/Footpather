@@ -51,6 +51,10 @@
     <marker ng-repeat="report in reports" position="[{{report.latitude}}, {{report.longitude}}]" icon="/img/icons/report.png">
     </marker>
 
+    <!--Place markers-->
+    <marker ng-repeat="place in places" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
+    </marker>
+
     <!--user markers-->
     <marker ng-repeat="user in users" position="[{{user.latitude}}, {{user.longitude}}]" icon="/img/icons/girl.png">
     </marker>

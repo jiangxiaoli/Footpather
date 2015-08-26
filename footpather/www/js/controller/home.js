@@ -80,6 +80,7 @@ angular.module('app.controller.home', [])
       getNearByUsers(lat, lng);
       getNearByCrimeReports(lat, lng);
       getNearByReports(lat, lng);
+      getNearByPlaces(lat, lng);
       //$ionicLoading.hide();
     }
 
@@ -120,13 +121,30 @@ angular.module('app.controller.home', [])
       var types = "8,97,148,9,149,150"; //only show sex related crimes
       tile.getNearByCrimeReports(lat, lng, types)
         .success(function(res){
-          console.log(res);
           $scope.crimereports = res;
           $ionicLoading.hide(); //takes longest time, hide loading after get crimereport complete
         }).error(function(err){
           alert("Get Nearby Crime Error: " + err);
         });
     }
+
+    /**
+     * Get nearby places
+     * @param lat
+     * @param lng
+     * @param radius
+     * @param types
+     */
+    function getNearByPlaces (lat, lng, radius, types) {
+      tile.getNearByPlaces(lat, lng, radius, types)
+        .success(function(res){
+          console.log(res);
+          $scope.places = res;
+        }).error(function(err){
+          alert("Get Nearby Places Error: " + err);
+        });
+    }
+
 
     //prepare ion-complete for navigate inout, with auto complete address
     //the selected data is stored in ng-model for each selection

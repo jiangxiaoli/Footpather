@@ -3,7 +3,7 @@
  * for test
  */
 angular.module('app.controller.testonly', [])
-  .controller('TestCtrl', function($scope, user, tile){
+  .controller('TestCtrl', function($scope, user, tile, map){
 
     console.log('TestCtrl loaded');
 
@@ -31,6 +31,7 @@ angular.module('app.controller.testonly', [])
     $scope.users = null;
     $scope.reports = null;
     $scope.crimereports = null;
+    $scope.places = null;
 
     $scope.addReport = function(report) {
       tile.submitReport(report)
@@ -89,6 +90,15 @@ angular.module('app.controller.testonly', [])
         }).error(function(err){
           alert("Get Nearby Crime Error: " + err);
         });
-    }
+    };
+
+    $scope.getNearByPlaces = function(lat, lng, radius, types) {
+      tile.getNearByPlaces(lat, lng, radius, types)
+        .success(function(res){
+          $scope.places = res;
+        }).error(function(err){
+          alert("Get Nearby Places Error: " + err);
+        });
+    };
   }
 );

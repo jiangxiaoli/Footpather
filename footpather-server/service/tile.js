@@ -5,6 +5,7 @@ var tiledb = require('../dao/tile');
 var userdb = require('../dao/user');
 var crimereport = require('./crime_report');
 var async = require('async');
+var request = require('request');
 
 module.exports = {
 
@@ -138,6 +139,25 @@ module.exports = {
         }, function(err, results) {
             callback(err, [].concat.apply([], results));
         });
+    },
+
+    getNearByPlaces: function(lat, lng, radius, types, callback) {
+        if(!radius) radius = 500;
+        if(!types) types = 'store';
+        var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' +
+            lat + ',' + lng +
+            '&radius=' + radius +
+            '&types=' + types +
+            '&key=AIzaSyDLqY17UJMuyDS2x5CEfOwfFahpJ2KoV4o';
+        console.log(url);
+        request.get(url,
+            function (error, response, body) {
+                if (error)
+                    callback("err get: " + url);
+                else
+                    callback(null, JSON.parse(body).results);
+            }
+        );
     },
 
     getAllDataByTiles: function(coordsList, callback) {

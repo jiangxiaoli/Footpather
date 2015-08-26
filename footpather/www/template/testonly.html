@@ -66,6 +66,8 @@
       <a class="button button-default" ng-click="getNearByUsers(lat, lng)">Get Nearby Users</a>
       <a class="button button-default" ng-click="getNearByCrimeReports(lat, lng, ids)">Get Nearby Crime Reports</a>
 
+      <a class="button button-default" ng-click="getNearByPlaces(lat, lng, null, null)">Get Nearby Places</a>
+
     </div>
 
     <!--display result-->
@@ -82,6 +84,9 @@
     </div>
     <div class="card" ng-if="crimereports">
       Crime Reports: {{crimereports}}
+    </div>
+    <div class="card" ng-if="places">
+      Places: {{places}}
     </div>
   </ion-content>
 </ion-view>

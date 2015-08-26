@@ -38,6 +38,18 @@ router.get('/nearby/crimereports', function(req, res, next) {
     });
 });
 
+router.get('/nearby/places', function(req, res, next) {
+    var lat = req.query.lat;
+    var lng = req.query.lng;
+    var radius = req.query.radius;
+    var types = req.query.types;
+    tile.getNearByPlaces(lat, lng, radius, types, function(err, places){
+        if(err) res.status(400).send("error" + err);
+        else res.status(200).json(places);
+    });
+
+});
+
 // add report to tile
 router.post('/report', function(req, res, next) {
     tile.addReportToTile(req.body, function(err, tile){
@@ -45,6 +57,7 @@ router.post('/report', function(req, res, next) {
         else res.status(201).json(tile);
     });
 });
+
 
 // like report
 router.post('/:tileId/report/:id', function(req, res, next) {

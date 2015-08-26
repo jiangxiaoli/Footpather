@@ -80,6 +80,23 @@ angular.module('app.service.tile', [])
         var url = host + 'tile/nearby/crimereports?lat=' + lat + '&lng=' + lng;
         if (ids && ids != "") url += '&ids=' + ids;
         return $http.get(url);
+      },
+
+      /**
+       * get nearby place
+       * @param lat
+       * @param lng
+       * @param radius (if null or empty, then default to 500)
+       * @param types (if null or empty, then default to 'store')
+       * supported types: https://developers.google.com/places/supported_types
+       * when filter multiple types: type1|type2|...
+       * @returns {HttpPromise}
+       */
+      getNearByPlaces: function(lat, lng, radius, types) {
+        var url = host + 'tile/nearby/places?lat=' + lat + '&lng=' + lng;
+        if (radius && radius != "") url += '&radius=' + radius;
+        if (types && types != "") url += '&types=' + types;
+        return $http.get(url);
       }
     }
   }

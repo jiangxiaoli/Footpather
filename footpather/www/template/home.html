@@ -1,7 +1,7 @@
 <!--add scroll="false" data-tap-disabled="true" to enable on-click-->
 <ion-view title="Home" scroll="false" data-tap-disabled="true">
 
-  <map center="current-location" zoom="16" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}">
+  <map center="current-location" zoom="16" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-bounds_changed="refreshMap()">
 
     <!--buttons-->
     <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
@@ -9,6 +9,7 @@
     <button id="report-btn" ng-click="" class="button icon-left ion-speakerphone button-stable">Report</button>
     <button id="navigate-btn" ng-click="navModal.show()" ng-show="!inNavigate" class="button icon-left ion-map button-stable">Navigate</button>
     <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-stable">Stop Navigate</button>
+    <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
 
     <!--current locaiton marker-->
     <marker position="current-location"></marker>
@@ -52,8 +53,19 @@
     </marker>
 
     <!--Place markers-->
-    <marker ng-repeat="place in places" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
+    <marker on-click="showInfoWindow(event, '{{place.$$hashKey}}')" ng-repeat="place in places" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
     </marker>
+    <info-window id="{{place.$$hashKey}}">
+      <div ng-non-bindable="">
+        <div id="siteNotice"></div>
+        <h1 id="firstHeading" class="firstHeading">Uluru</h1>
+        <div id="bodyContent">
+          <p>Attribution: Uluru, <a href="//en.wikipedia.org/w/index.php?title=Uluru&amp;oldid=297882194">
+            http://en.wikipedia.org/w/index.php?title=Uluru</a>
+            (last visited June 22, 2009).</p>
+        </div>
+      </div>
+    </info-window>
 
     <!--user markers-->
     <marker ng-repeat="user in users" position="[{{user.latitude}}, {{user.longitude}}]" icon="/img/icons/girl.png">

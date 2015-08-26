@@ -50,10 +50,19 @@ angular.module('app.controller.home', [])
       getCurrLoc();
     };
 
+    $scope.refreshMap = function () {
+      if(!$scope.map) {
+        return;
+      }
+      var lat = $scope.map.center.G;
+      var lng = $scope.map.center.K;
+      $scope.loading = $ionicLoading.show();
+      getData(lat, lng);
+    };
+
     /**
      * Get user current location
      */
-     //TODO update when map drags, change to smaller range...
     function getCurrLoc(){
       $scope.loading = $ionicLoading.show({
         content: 'Getting current location...',
@@ -144,7 +153,6 @@ angular.module('app.controller.home', [])
           alert("Get Nearby Places Error: " + err);
         });
     }
-
 
     //prepare ion-complete for navigate inout, with auto complete address
     //the selected data is stored in ng-model for each selection

@@ -30,29 +30,34 @@ body {
 #help-me-btn,
 #navigate-btn,
 #stop-navigate-btn,
-#report-btn {
+#report-btn,
+#refresh-map-btn {
   position: absolute;
 }
 
-#find-me-btn,
 #help-me-btn {
   top: 10%;
+  right: 5%;
 }
 
-#report-btn,
-#navigate-btn,
-#stop-navigate-btn {
+#find-me-btn {
+  bottom: 15%;
+  right: 5%;
+}
+
+#report-btn {
+  left: 5%;
   bottom: 5%
 }
 
-#help-me-btn,
-#report-btn {
-  left: 5%;
-}
-
-#find-me-btn,
 #navigate-btn,
 #stop-navigate-btn {
+  bottom: 5%;
+  right: 5%;
+}
+
+#refresh-map-btn {
+  bottom: 25%;
   right: 5%;
 }
 

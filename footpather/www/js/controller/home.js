@@ -3,7 +3,7 @@
  * Home screen controller to display map info, report/navigate buttons
  */
 angular.module('app.controller.home', [])
-  .controller('HomeCtrl', function($scope, user, tile, map, crimereport, $ionicLoading, $compile, $ionicModal, $ionicPopup, $http){
+  .controller('HomeCtrl', function($scope, user, tile, map, crimereport, $ionicLoading, $compile, $ionicModal, $ionicPopup, $http, $interval){
 
     console.log('HomeCtrl loaded');
 
@@ -21,13 +21,16 @@ angular.module('app.controller.home', [])
       {
         featureType: "all",
         stylers: [
-          { saturation: -80 }
+          { hue: "#00ff91" },
+          { saturation: -65 },
+          { lightness: 41 },
+          { Gamma: 0.86 }
         ]
       },{
         featureType: "road.arterial",
         elementType: "geometry",
         stylers: [
-          { hue: "#00ffee" },
+          { hue: "#009900" },
           { saturation: 50 }
         ]
       },{
@@ -114,8 +117,10 @@ angular.module('app.controller.home', [])
      * @param lng
      */
     function getNearByCrimeReports (lat, lng) {
-      tile.getNearByCrimeReports(lat, lng)
+      var types = "8,97,148,9,149,150"; //only show sex related crimes
+      tile.getNearByCrimeReports(lat, lng, types)
         .success(function(res){
+          console.log(res);
           $scope.crimereports = res;
           $ionicLoading.hide(); //takes longest time, hide loading after get crimereport complete
         }).error(function(err){
@@ -148,11 +153,11 @@ angular.module('app.controller.home', [])
         });
     };
 
-    //show modal
+    //show navigate modal
     $ionicModal.fromTemplateUrl('templates/navigateModal.html', {
       scope: $scope
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.navModal = modal;
     });
 
     $scope.origin = "";
@@ -165,16 +170,32 @@ angular.module('app.controller.home', [])
         //calculate the route
         $scope.origin = navigate.from;
         $scope.destination = navigate.to;
-        $scope.modal.hide();
+        $scope.navModal.hide();
         $scope.inNavigate = true;
       }
     };
 
     $scope.clearRoute = function () {
-      $scope.origin = "";
-      $scope.destination = "";
-      //how to clear direction
+      //TODO how to clear direction
       $scope.inNavigate = false;
+    };
+
+    /**
+     * Show sex offender popup
+     * @param event - marker click event
+     * @param offender - the offender for the marker
+     */
+    $scope.showOffenderPopup = function(event, offender) {
+      console.log(offender);
+      $scope.currOffender = offender;
+      $ionicPopup.show({
+        templateUrl: "templates/offenderPopup.html",
+        title: "Registered Sex Offender",
+        scope: $scope,
+        buttons: [
+          { text: 'Got it!' }
+        ]
+      });
     };
 
   }

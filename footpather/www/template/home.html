@@ -1,4 +1,5 @@
-<ion-view title="Home">
+<!--add scroll="false" data-tap-disabled="true" to enable on-click-->
+<ion-view title="Home" scroll="false" data-tap-disabled="true">
 
   <map center="current-location" zoom="16" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}">
 
@@ -6,29 +7,45 @@
     <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
     <button id="help-me-btn" ng-click="" class="button icon-left ion-alert button-assertive">HELP ME!</button>
     <button id="report-btn" ng-click="" class="button icon-left ion-speakerphone button-stable">Report</button>
-    <button id="navigate-btn" ng-click="modal.show()" ng-show="!inNavigate" class="button icon-left ion-map button-stable">Navigate</button>
+    <button id="navigate-btn" ng-click="navModal.show()" ng-show="!inNavigate" class="button icon-left ion-map button-stable">Navigate</button>
     <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-stable">Stop Navigate</button>
 
     <!--current locaiton marker-->
-    <marker id="foo" position="current-location"></marker>
-    <!--info window test-->
-    <!--<info-window id="bar" max-width="200" visible-on-marker="foo">-->
-      <!--<div ng-non-bindable="">-->
-        <!--<div id="siteNotice"></div>-->
-        <!--<h5 id="firstHeading" class="firstHeading">Crime</h5>-->
-        <!--<div id="bodyContent">-->
-          <!--<img ng-src="{{streetViewUrl}}" width="160">-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</info-window>-->
+    <marker position="current-location"></marker>
 
     <!--crime markers-->
-    <marker ng-repeat="crime in crimereports.crimes" position="[{{crime.lat}}, {{crime.lng}}]" icon="/img/icons/crime.png">
+    <marker ng-repeat="crime in crimereports.crimes" on-click="" position="[{{crime.lat}}, {{crime.lng}}]" icon="/img/icons/crime.png">
     </marker>
 
     <!--sex offender markers-->
-    <marker ng-repeat="offender in crimereports.offenders" position="[{{offender.lat}}, {{offender.lng}}]" icon="/img/icons/offender.png">
+    <marker ng-repeat="offender in crimereports.offenders" on-click="showOffenderPopup(offender)" position="[{{offender.lat}}, {{offender.lng}}]" icon="/img/icons/offender.png">
     </marker>
+    <script id="templates/offenderPopup.html" type="text/ng-template">
+      <div class="text-center">
+        <img ng-src="{{currOffender.photoUrl}}" alt="offender photo" height="120px"/>
+        <h4>{{currOffender.name}}</h4>
+      </div>
+      <div class="row">
+        <div class="col col-33 text-right">Address:</div>
+        <div class="col">{{currOffender.address}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33 text-right">Eye color:</div>
+        <div class="col">{{currOffender.eyeColor}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33 text-right">Haircolor:</div>
+        <div class="col">{{currOffender.hairColor}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33 text-right">Height:</div>
+        <div class="col">{{currOffender.height}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33 text-right">Race:</div>
+        <div class="col">{{currOffender.race}}</div>
+      </div>
+    </script>
 
     <!--report markers-->
     <marker ng-repeat="report in reports" position="[{{report.latitude}}, {{report.longitude}}]" icon="/img/icons/report.png">
@@ -39,7 +56,7 @@
     </marker>
 
     <!--route - directions-->
-    <directions
+    <directions ng-show="inNavigate"
       panel="directions-panel"
       travel-mode="WALKING"
       origin="{{origin}}"
@@ -53,7 +70,7 @@
     <ion-modal-view id="navigateModal">
       <ion-header-bar class="bar bar-header bar-stable">
         <h1 class="title">Plan a Footpath</h1>
-        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        <button class="button button-clear button-primary" ng-click="navModal.hide()">Cancel</button>
       </ion-header-bar>
       <ion-content class="padding">
 
@@ -75,10 +92,6 @@
                               items-method="getTestItems(query)"
                               placeholder="Enter your end location..."
                               items-clicked-method="toLocSelect(callback)"></ion-autocomplete>
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Time</span>
-            <input ng-model="navigate.time" type="time">
           </label>
           <button class="button button-full button-positive" ng-click="calculateNavigation(navigate)">Start Navigate</button>
         </div>

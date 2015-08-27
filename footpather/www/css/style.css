@@ -1,8 +1,13 @@
 /* Empty. Add your own CSS if you like */
 
-/*** sidebar ***/
 body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.pull-top-right {
+  position: absolute;
+  right: 5%;
+  top:5%;
 }
 
 /*** sidebar ***/
@@ -89,6 +94,11 @@ body {
 
 .report-edit-popup .popup {
   top: 40%;
+}
+
+.help-popup .popup {
+  top: 20%;
+  width: 80%;
 }
 
 /*** welcome page ***/

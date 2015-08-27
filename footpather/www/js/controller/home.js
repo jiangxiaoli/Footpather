@@ -324,13 +324,21 @@ angular.module('app.controller.home', [])
     };
 
     $scope.showHelpPopup = function () {
-      $scope.reportMenuPop = $ionicPopup.show({
+      $scope.helpMenuPop = $ionicPopup.show({
         templateUrl: "templates/helpPopup.html",
+        cssClass:"help-popup",
         scope: $scope,
         buttons: [
-          { text: 'Cancel' }
+          {
+            text: '<b>Call 911!</b>',
+            type: 'button-large button-assertive'
+          }
         ]
       });
+    };
+
+    $scope.closeHelpPop = function(){
+      $scope.helpMenuPop.close();
     };
 
     $scope.newReport ={};

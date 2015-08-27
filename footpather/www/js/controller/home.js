@@ -214,7 +214,6 @@ angular.module('app.controller.home', [])
      * @param offender - the offender for the marker
      */
     $scope.showOffenderPopup = function(event, offender) {
-      console.log(offender);
       $scope.currOffender = offender;
       $ionicPopup.show({
         templateUrl: "templates/offenderPopup.html",
@@ -238,7 +237,6 @@ angular.module('app.controller.home', [])
      * @param place - the place for the marker
      */
     $scope.showPlacePopup = function(event, place) {
-      console.log(place);
       $scope.currPlace = place;
       $ionicPopup.show({
         templateUrl: "templates/placePopup.html",
@@ -251,8 +249,8 @@ angular.module('app.controller.home', [])
 
       //recenter map
       $scope.map.setCenter({
-        lat: place.lat,
-        lng: place.lng
+        lat: place.geometry.location.lat,
+        lng: place.geometry.location.lng
       });
     };
 

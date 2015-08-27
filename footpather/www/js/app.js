@@ -15,7 +15,7 @@ angular.module('app', ['ionic','ngMap', 'ion-autocomplete',
   'app.service.tile',
   'app.service.map',
   'app.service.crimereport'
-]).constant('host', 'http://localhost:3000/')
+]).constant('host', 'https://footpather-server.herokuapp.com/')
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider

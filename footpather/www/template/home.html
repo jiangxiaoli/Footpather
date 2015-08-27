@@ -28,7 +28,6 @@
       <img class="top-center-icon" ng-src="/img/icons/crime.png"/>
     </script>
 
-
     <!--sex offender markers-->
     <marker ng-repeat="offender in crimereports.offenders" on-click="showOffenderPopup(offender)" position="[{{offender.lat}}, {{offender.lng}}]" icon="/img/icons/offender.png">
     </marker>
@@ -103,6 +102,7 @@
 
   <script id="templates/reportMenuPopup.html" type="text/ng-template">
     <div class="">
+      <!-- Passing 4 types: suspecious, location, animal, others -->
       <img ng-src="/img/icons/girl.png" height="120px" ng-click="showEditReportPopup('girl')"/>
       <img ng-src="/img/icons/crime.png" height="120px" ng-click="showEditReportPopup('crime')"/>
       <img ng-src="/img/icons/offender.png" height="120px" ng-click="showEditReportPopup('offender')"/>
@@ -111,8 +111,9 @@
 
   <script id="templates/reportEditPopup.html" type="text/ng-template">
     <div class="">
+      <!--mapping type to icon name-->
       <img ng-src="/img/icons/{{newReport.type}}.png" alt="" height="80px"/>
-      <input type="text" ng-model="newReport.desc" placeholder="Description..."/>
+      <input type="text" ng-model="newReport.description" placeholder="Description..."/>
     </div>
   </script>
 

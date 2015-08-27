@@ -278,24 +278,49 @@ angular.module('app.controller.home', [])
       $scope.reportMenuPop.close();
       console.log(type);
 
+      //Passing 4 types: suspecious, location, animal, others
+      //TODO mapping types to icon name
       $scope.newReport.type = type;
 
       //http://stackoverflow.com/questions/25310234/ionic-framework-two-popups-in-tandem
       $timeout( function () {
-        $scope.reportConfirmPop = $ionicPopup.confirm({
-          title: "Report An Incident",
+
+        var reportEditPopup = $ionicPopup.show({
+          template: '<input type="password" ng-model="data.wifi">',
+          title: 'Report An Incident',
           templateUrl: "templates/reportEditPopup.html",
-          cssClass:"report-edit-popup"
+          cssClass:"report-edit-popup",
+          scope: $scope,
+          buttons: [
+            { text: 'Cancel' },
+            {
+              text: '<b>Save</b>',
+              type: 'button-positive',
+              onTap: function(e) {
+                return $scope.newReport.description || "";
+              }
+            }
+          ]
         });
-        $scope.reportConfirmPop.then(function(res) {
+
+        reportEditPopup.then(function (res) {
           if(res) {
-            console.log('You are sure');
-            console.log($scope.newReport.desc);
-            //create new
-          } else {
-            console.log('You are not sure');
+            $scope.newReport.latitude = $scope.currlat;
+            $scope.newReport.longitude = $scope.currlng;
+
+            console.log($scope.newReport);
+
+            tile.submitReport($scope.newReport)
+              .success(function(res){
+                alert("Report submitted");
+              }).error(function(err){
+                alert("Add Report Error: " + err);
+              });
           }
+
         });
+
+
       }, 500);
 
     }

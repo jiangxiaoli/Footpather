@@ -233,6 +233,30 @@ angular.module('app.controller.home', [])
     };
 
     /**
+     * Show open place popup
+     * @param event - marker click event
+     * @param place - the place for the marker
+     */
+    $scope.showPlacePopup = function(event, place) {
+      console.log(place);
+      $scope.currPlace = place;
+      $ionicPopup.show({
+        templateUrl: "templates/placePopup.html",
+        title: "Open Now",
+        scope: $scope,
+        buttons: [
+          { text: 'Got it!' }
+        ]
+      });
+
+      //recenter map
+      $scope.map.setCenter({
+        lat: place.lat,
+        lng: place.lng
+      });
+    };
+
+    /**
      * Show sex offender popup
      * @param event - marker click event
      * @param crime - the crime for the marker

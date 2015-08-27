@@ -40,7 +40,6 @@
         <div class="col col-33 text-right">Address:</div>
         <div class="col">{{currOffender.address}}</div>
       </div>
-      <img class="top-center-icon" ng-src="/img/icons/offender.png"/>
     </script>
 
     <!--report markers-->
@@ -67,8 +66,14 @@
     </script>
 
     <!--Place markers-->
-    <marker ng-repeat="place in places" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
+    <marker ng-repeat="place in places" on-click="showPlacePopup(place)" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
     </marker>
+    <script id="templates/placePopup.html" type="text/ng-template">
+      <div class="text-center">
+        <h4>{{currPlace.name}}</h4>
+        <h6>{{currPlace.vicinity}}</h6>
+      </div>
+    </script>
 
     <!--user markers-->
     <marker ng-repeat="user in users" position="[{{user.latitude}}, {{user.longitude}}]" icon="/img/icons/girl.png">

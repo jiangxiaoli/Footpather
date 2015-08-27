@@ -61,6 +61,36 @@ body {
   right: 5%;
 }
 
+/*popup center icon*/
+.top-center-icon {
+  position: fixed;
+  top: 43%;
+  left: 43%;
+  width: 15%;
+}
+
+/*override popup*/
+.popup {
+  position: absolute;;
+  border-radius: 5px !important;
+  width: 100% !important;
+  top: 0;
+  left: 0;
+}
+
+.popup-head,
+.popup-body {
+  padding: 5px !important;
+}
+
+.report-menu-popup .popup {
+  top: 60%;
+}
+
+.report-edit-popup .popup {
+  top: 40%;
+}
+
 /*** welcome page ***/
 .slider {
   min-height: 85% !important;

@@ -3,7 +3,7 @@
  * Home screen controller to display map info, report/navigate buttons
  */
 angular.module('app.controller.home', [])
-  .controller('HomeCtrl', function($scope, user, tile, map, crimereport, $ionicLoading, $compile, $ionicModal, $ionicPopup, $http, $interval){
+  .controller('HomeCtrl', function($scope, user, tile, map, crimereport, $ionicLoading, $compile, $ionicModal, $ionicPopup, $http, $interval, $timeout){
 
     console.log('HomeCtrl loaded');
 
@@ -13,8 +13,10 @@ angular.module('app.controller.home', [])
     crimereport.stub();
     getCurrLoc();
 
-    //preload all images, pay attention to the performance
-    //$scope.streetViewUrl = map.getStreetView(37.777052, -122.403783);
+    $scope.map;
+    $scope.$on('mapInitialized', function(event, map) {
+      $scope.map = map;
+    });
 
     //styling of maps
     var styleArray = [ //any style array defined in the google documentation you linked
@@ -85,6 +87,7 @@ angular.module('app.controller.home', [])
      * @param lng
      */
     function getData(lat, lng){
+      console.log('get data');
       //get map center
       getNearByUsers(lat, lng);
       getNearByCrimeReports(lat, lng);
@@ -147,7 +150,6 @@ angular.module('app.controller.home', [])
     function getNearByPlaces (lat, lng, radius, types) {
       tile.getNearByPlaces(lat, lng, radius, types)
         .success(function(res){
-          console.log(res);
           $scope.places = res;
         }).error(function(err){
           alert("Get Nearby Places Error: " + err);
@@ -222,7 +224,81 @@ angular.module('app.controller.home', [])
           { text: 'Got it!' }
         ]
       });
+
+      //recenter map
+      $scope.map.setCenter({
+        lat: offender.lat,
+        lng: offender.lng
+      });
     };
+
+    /**
+     * Show sex offender popup
+     * @param event - marker click event
+     * @param crime - the crime for the marker
+     */
+    $scope.showCrimePopup = function (event, crime) {
+
+      $scope.currCrime = crime;
+
+      //get google map street view url
+      $scope.streetViewUrl = map.getStreetView(crime.lat, crime.lng);
+
+      //show pop
+      $ionicPopup.show({
+        templateUrl: "templates/crimePopup.html",
+        title: crime.incident_type_name,
+        scope: $scope,
+        buttons: [
+          { text: 'Got it!' }
+        ]
+      });
+
+      //recenter map
+      $scope.map.setCenter({
+        lat: crime.lat,
+        lng: crime.lng
+      });
+    };
+
+    $scope.showReportMenuPopup = function () {
+      $scope.reportMenuPop = $ionicPopup.show({
+        templateUrl: "templates/reportMenuPopup.html",
+        cssClass:"report-menu-popup",
+        title: "Report An Incident",
+        scope: $scope,
+        buttons: [
+          { text: 'Done' }
+        ]
+      });
+    };
+
+    $scope.newReport ={};
+    $scope.showEditReportPopup = function (type) {
+      $scope.reportMenuPop.close();
+      console.log(type);
+
+      $scope.newReport.type = type;
+
+      //http://stackoverflow.com/questions/25310234/ionic-framework-two-popups-in-tandem
+      $timeout( function () {
+        $scope.reportConfirmPop = $ionicPopup.confirm({
+          title: "Report An Incident",
+          templateUrl: "templates/reportEditPopup.html",
+          cssClass:"report-edit-popup"
+        });
+        $scope.reportConfirmPop.then(function(res) {
+          if(res) {
+            console.log('You are sure');
+            console.log($scope.newReport.desc);
+            //create new
+          } else {
+            console.log('You are not sure');
+          }
+        });
+      }, 500);
+
+    }
 
   }
 );

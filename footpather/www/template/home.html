@@ -1,12 +1,14 @@
 <!--add scroll="false" data-tap-disabled="true" to enable on-click-->
 <ion-view title="Home" scroll="false" data-tap-disabled="true">
 
-  <map center="current-location" zoom="16" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-bounds_changed="refreshMap()">
+
+
+  <map center="current-location" zoom="16" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-drag-end="refreshMap()" on-zoom_changed="refreshMap()">
 
     <!--buttons-->
     <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
     <button id="help-me-btn" ng-click="" class="button icon-left ion-alert button-assertive">HELP ME!</button>
-    <button id="report-btn" ng-click="" class="button icon-left ion-speakerphone button-stable">Report</button>
+    <button id="report-btn" ng-click="showReportMenuPopup()" class="button icon-left ion-speakerphone button-stable">Report</button>
     <button id="navigate-btn" ng-click="navModal.show()" ng-show="!inNavigate" class="button icon-left ion-map button-stable">Navigate</button>
     <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-stable">Stop Navigate</button>
     <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
@@ -15,8 +17,17 @@
     <marker position="current-location"></marker>
 
     <!--crime markers-->
-    <marker ng-repeat="crime in crimereports.crimes" on-click="" position="[{{crime.lat}}, {{crime.lng}}]" icon="/img/icons/crime.png">
+    <marker ng-repeat="crime in crimereports.crimes" on-click="showCrimePopup(crime)" position="[{{crime.lat}}, {{crime.lng}}]" icon="/img/icons/crime.png">
     </marker>
+    <script id="templates/crimePopup.html" type="text/ng-template">
+      <div class="text-center">
+        <img ng-src="{{streetViewUrl}}" height="100px">
+        <h5>Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mma'}}</h5>
+      </div>
+      <!--overlay center icon-->
+      <img class="top-center-icon" ng-src="/img/icons/crime.png"/>
+    </script>
+
 
     <!--sex offender markers-->
     <marker ng-repeat="offender in crimereports.offenders" on-click="showOffenderPopup(offender)" position="[{{offender.lat}}, {{offender.lng}}]" icon="/img/icons/offender.png">
@@ -30,22 +41,7 @@
         <div class="col col-33 text-right">Address:</div>
         <div class="col">{{currOffender.address}}</div>
       </div>
-      <div class="row">
-        <div class="col col-33 text-right">Eye color:</div>
-        <div class="col">{{currOffender.eyeColor}}</div>
-      </div>
-      <div class="row">
-        <div class="col col-33 text-right">Haircolor:</div>
-        <div class="col">{{currOffender.hairColor}}</div>
-      </div>
-      <div class="row">
-        <div class="col col-33 text-right">Height:</div>
-        <div class="col">{{currOffender.height}}</div>
-      </div>
-      <div class="row">
-        <div class="col col-33 text-right">Race:</div>
-        <div class="col">{{currOffender.race}}</div>
-      </div>
+      <img class="top-center-icon" ng-src="/img/icons/offender.png"/>
     </script>
 
     <!--report markers-->
@@ -53,19 +49,8 @@
     </marker>
 
     <!--Place markers-->
-    <marker on-click="showInfoWindow(event, '{{place.$$hashKey}}')" ng-repeat="place in places" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
+    <marker ng-repeat="place in places" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
     </marker>
-    <info-window id="{{place.$$hashKey}}">
-      <div ng-non-bindable="">
-        <div id="siteNotice"></div>
-        <h1 id="firstHeading" class="firstHeading">Uluru</h1>
-        <div id="bodyContent">
-          <p>Attribution: Uluru, <a href="//en.wikipedia.org/w/index.php?title=Uluru&amp;oldid=297882194">
-            http://en.wikipedia.org/w/index.php?title=Uluru</a>
-            (last visited June 22, 2009).</p>
-        </div>
-      </div>
-    </info-window>
 
     <!--user markers-->
     <marker ng-repeat="user in users" position="[{{user.latitude}}, {{user.longitude}}]" icon="/img/icons/girl.png">
@@ -113,6 +98,22 @@
         </div>
       </ion-content>
     </ion-modal-view>
+  </script>
+
+
+  <script id="templates/reportMenuPopup.html" type="text/ng-template">
+    <div class="">
+      <img ng-src="/img/icons/girl.png" height="120px" ng-click="showEditReportPopup('girl')"/>
+      <img ng-src="/img/icons/crime.png" height="120px" ng-click="showEditReportPopup('crime')"/>
+      <img ng-src="/img/icons/offender.png" height="120px" ng-click="showEditReportPopup('offender')"/>
+    </div>
+  </script>
+
+  <script id="templates/reportEditPopup.html" type="text/ng-template">
+    <div class="">
+      <img ng-src="/img/icons/{{newReport.type}}.png" alt="" height="80px"/>
+      <input type="text" ng-model="newReport.desc" placeholder="Description..."/>
+    </div>
   </script>
 
 </ion-view>

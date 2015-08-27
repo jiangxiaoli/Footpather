@@ -7,7 +7,7 @@
 
     <!--buttons-->
     <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
-    <button id="help-me-btn" ng-click="" class="button icon-left ion-alert button-assertive">HELP ME!</button>
+    <button id="help-me-btn" ng-click="showHelpPopup()" class="button icon-left ion-alert button-assertive">HELP ME!</button>
     <button id="report-btn" ng-click="showReportMenuPopup()" class="button icon-left ion-speakerphone button-stable">Report</button>
     <button id="navigate-btn" ng-click="navModal.show()" ng-show="!inNavigate" class="button icon-left ion-map button-stable">Navigate</button>
     <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-stable">Stop Navigate</button>
@@ -138,6 +138,14 @@
       <!--mapping type to icon name-->
       <img ng-src="/img/icons/{{newReport.type}}.png" alt="" height="80px"/>
       <input type="text" ng-model="newReport.description" placeholder="Description..."/>
+    </div>
+  </script>
+
+  <script id="templates/helpPopup.html" type="text/ng-template">
+    <div class="text-center">
+      <h1 class="assertive">Help Me!</h1>
+      <button class="button button-block button-assertive">Call 911</button>
+      <button class="button button-block button-energized">Alert Nearby Users</button>
     </div>
   </script>
 

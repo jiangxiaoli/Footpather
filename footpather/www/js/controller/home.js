@@ -323,6 +323,16 @@ angular.module('app.controller.home', [])
       });
     };
 
+    $scope.showHelpPopup = function () {
+      $scope.reportMenuPop = $ionicPopup.show({
+        templateUrl: "templates/helpPopup.html",
+        scope: $scope,
+        buttons: [
+          { text: 'Cancel' }
+        ]
+      });
+    };
+
     $scope.newReport ={};
     $scope.showEditReportPopup = function (type) {
       $scope.reportMenuPop.close();

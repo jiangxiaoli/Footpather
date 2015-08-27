@@ -44,8 +44,27 @@
     </script>
 
     <!--report markers-->
-    <marker ng-repeat="report in reports" position="[{{report.latitude}}, {{report.longitude}}]" icon="/img/icons/report.png">
+    <marker ng-repeat="report in reports" on-click="showReportPopup(report)" position="[{{report.latitude}}, {{report.longitude}}]" icon="/img/icons/report.png">
     </marker>
+    <script id="templates/reportPopup.html" type="text/ng-template">
+      <div class="text-center">
+        <div class="row">
+          <div class="col col-50">
+            <!--mapping type to icon name-->
+            <img ng-src="/img/icons/report.png" alt="" height="80px"/>
+            <h4>{{currReport.type}} </h4>
+            <h5>{{currReport.description}}</h5>
+          </div>
+          <div class="col">
+            <h4>Time: {{currReport.date | date:'MM/dd/yyyy @ h:mma'}}</h4>
+            <h4>Likes: {{currReport.likes}}</h4>
+            <button class="button button-outline button-assertive" ng-click="likeReport(currReport)">Like</button>
+          </div>
+        </div>
+      </div>
+      <!--overlay center icon-->
+      <img class="top-center-icon" ng-src="/img/icons/report.png"/>
+    </script>
 
     <!--Place markers-->
     <marker ng-repeat="place in places" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">

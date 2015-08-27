@@ -261,6 +261,32 @@ angular.module('app.controller.home', [])
       });
     };
 
+    /**
+     * Show report popup
+     * @param event - marker click event
+     * @param report - the report for the marker
+     */
+    $scope.showReportPopup = function (event, report) {
+
+      $scope.currReport = report;
+
+      //show pop
+      $ionicPopup.show({
+        templateUrl: "templates/reportPopup.html",
+        title: report.type,
+        scope: $scope,
+        buttons: [
+          { text: 'Got it!' }
+        ]
+      });
+
+      //recenter map
+      $scope.map.setCenter({
+        lat: report.latitude,
+        lng: report.longitude
+      });
+    };
+
     $scope.showReportMenuPopup = function () {
       $scope.reportMenuPop = $ionicPopup.show({
         templateUrl: "templates/reportMenuPopup.html",
@@ -284,7 +310,6 @@ angular.module('app.controller.home', [])
 
       //http://stackoverflow.com/questions/25310234/ionic-framework-two-popups-in-tandem
       $timeout( function () {
-
         var reportEditPopup = $ionicPopup.show({
           template: '<input type="password" ng-model="data.wifi">',
           title: 'Report An Incident',
@@ -302,7 +327,6 @@ angular.module('app.controller.home', [])
             }
           ]
         });
-
         reportEditPopup.then(function (res) {
           if(res) {
             $scope.newReport.latitude = $scope.currlat;
@@ -317,12 +341,18 @@ angular.module('app.controller.home', [])
                 alert("Add Report Error: " + err);
               });
           }
-
         });
-
-
       }, 500);
+    };
 
+    $scope.likeReport = function (report) {
+      console.log(report);
+      tile.likeReport(report.tile_id, report._id)
+        .success(function(res){
+          $scope.currReport.likes++;
+        }).error(function(err){
+          alert("Like Report Error: " + err);
+        });
     }
 
   }

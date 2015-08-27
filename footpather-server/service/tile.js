@@ -142,12 +142,13 @@ module.exports = {
     },
 
     getNearByPlaces: function(lat, lng, radius, types, callback) {
-        if(!radius) radius = 500;
+        if(!radius) radius = 1000;
         if(!types) types = 'store';
         var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' +
             lat + ',' + lng +
             '&radius=' + radius +
-            '&types=' + types +
+            //'&rankby=distance' +
+            '&opennow&types=' + types +
             '&key=AIzaSyDLqY17UJMuyDS2x5CEfOwfFahpJ2KoV4o';
         console.log(url);
         request.get(url,

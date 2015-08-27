@@ -4,8 +4,7 @@
  * e.g. get user info, update user location...
  */
 angular.module('app.service.user', [])
-  .factory('user', function($http) {
-    var host = 'http://localhost:3000/';
+  .factory('user', function($http, host) {
 
     return {
       stub: function() {

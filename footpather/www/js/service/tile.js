@@ -3,8 +3,7 @@
  * Provide services to call backend API to get/post tile data from/to db
  */
 angular.module('app.service.tile', [])
-  .factory('tile', function($http) {
-    var host = 'http://localhost:3000/';
+  .factory('tile', function($http, host) {
 
     return {
       stub: function() {

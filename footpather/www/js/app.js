@@ -77,10 +77,37 @@ angular.module('app', ['ionic','ngMap', 'ion-autocomplete',
     }
   });
 })
-.controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
+.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, $location, $rootScope) {
+
+  $scope.isWelcome = false;
+  console.log($scope.isWelcome);
+
+  if($location.$$path === "/welcome") {
+    $scope.isWelcome = true;
+  } else {
+    $scope.isWelcome = false;
+  }
+    
+  $rootScope.$on("change to welcome", function () {
+    $scope.isWelcome = true;
+  });
+
+  $rootScope.$on("change to home", function () {
+    $scope.isWelcome = false;
+  });
 
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
+  };
+
+  $scope.goWelcome = function () {
+    $rootScope.$broadcast("change to welcome");
+    $location.path("/welcome");
+  };
+
+  $scope.goHome = function () {
+    $rootScope.$broadcast("change to home");
+    $location.path("/home");
   };
 
 });

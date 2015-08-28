@@ -54,7 +54,7 @@
     <ion-side-menus>
 
       <ion-side-menu-content>
-        <ion-header-bar class="bar-stable grey-hearder">
+        <ion-header-bar class="bar-stable grey-hearder" ng-hide="isWelcome">
           <button class="button button-icon icon sidebar-icon" ng-click="toggleLeft()" ng-hide="$exposeAside.active"></button>
           <!--<h1 class="title">[App Name]</h1>-->
           <!--<a href="/#/home" class="button button-icon ion-home"></a>-->
@@ -77,10 +77,10 @@
           </div>
           <div class="list">
             <div class="item">
-              <h2>My Profile</h2>
+              <h2 ng-click="goHome()">My Profile</h2>
             </div>
             <div class="item">
-              <h2>Settings</h2>
+              <h2 ng-click="goWelcome()">Settings</h2>
             </div>
             <div class="item">
               <h2>Logout</h2>

@@ -340,11 +340,43 @@ h1.app-title {
 }
 
 .app-tagline {
-  font-size: 1.2em;
+  font-size: 1.5em;
+  color: #fff;
+  margin: 45% 10%;
+}
+
+.slide-subtitle {
+  font-size: 15px;
 }
 
 .bar-footer a.button {
   width: 48%;
+}
+
+/*override pane*/
+.pane{
+  background-image: url("/img/welcome-bg/bg.png");
+  background-size: 100%;
+}
+
+#silde-1 {
+  background-image: url("/img/welcome-bg/1.png");
+  background-size: 100%;
+}
+
+#silde-2 {
+  background-image: url("/img/welcome-bg/2.png");
+  background-size: 100%;
+}
+
+#silde-3 {
+  background-image: url("/img/welcome-bg/3.png");
+  background-size: 100%;
+}
+
+#silde-4 {
+  background-image: url("/img/welcome-bg/4.png");
+  background-size: 100%;
 }
 
 /*** signup page ***/
@@ -372,4 +404,23 @@ p.description {
 
 .side-bar * {
   color: white;
+}
+
+/*** sign in ***/
+.login-logo{
+  margin: 40px;
+}
+
+.login-input {
+  margin: 5px 20px 5px 20px;
+}
+
+.login-btn {
+  background: #55be7f;
+  border-radius: 5px;
+  width: 95% !important;
+  border: none;
+  margin-left: 2%;
+  color: #fff !important;
+  font-weight: bold;
 }

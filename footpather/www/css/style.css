@@ -113,6 +113,7 @@ body {
   position: absolute;;
   border-radius: 5px !important;
   width: 100% !important;
+  /*/!*background: #ffffff !important;*!/ DO NOT override popup body here*/
   top: 0;
   left: 0;
 }
@@ -120,6 +121,25 @@ body {
 .popup-head,
 .popup-body {
   padding: 5px !important;
+  border: none;
+}
+
+.offender-popup .popup,
+.place-popup .popup,
+.crime-popup .popup {
+  background: #ffffff;
+}
+
+.offender-popup .popup-buttons .button,
+.place-popup .popup-buttons .button,
+.crime-popup .popup-buttons .button {
+  min-height: 30px !important;
+}
+
+.offender-popup .popup-buttons,
+.place-popup .popup-buttons,
+.crime-popup .popup-buttons {
+  min-height: 40px !important;
 }
 
 .report-menu-popup .popup {
@@ -175,7 +195,7 @@ body {
 .popup-buttons {
   margin: 0;
   padding: 0;
-  background: #e5e5e5;
+  background: #f8f8f8;
   border-top: 1px solid #c5c5c5;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;

@@ -25,9 +25,9 @@
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
       <div class="text-center">
-        <h4>{{currCrime.incident_type_name | uppercase }}</h4>
+        <h5>{{currCrime.incident_type_name | uppercase }}</h5>
         <p class="description">Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mm a'}}</p>
-        <img ng-src="{{streetViewUrl}}" height="100px">
+        <img ng-src="{{streetViewUrl}}" height="120px">
 
       </div>
       <!--overlay center icon-->

@@ -218,6 +218,7 @@ angular.module('app.controller.home', [])
       $ionicPopup.show({
         templateUrl: "templates/offenderPopup.html",
         title: "Registered Sex Offender",
+        cssClass: "offender-popup",
         scope: $scope,
         buttons: [
           { text: 'Got it!' }
@@ -240,6 +241,7 @@ angular.module('app.controller.home', [])
       $scope.currPlace = place;
       $ionicPopup.show({
         templateUrl: "templates/placePopup.html",
+        cssClass: "place-popup",
         title: "Open Now",
         scope: $scope,
         buttons: [
@@ -270,7 +272,7 @@ angular.module('app.controller.home', [])
       //show pop
       $ionicPopup.show({
         templateUrl: "templates/crimePopup.html",
-        //title: crime.incident_type_name,
+        cssClass: "crime-popup",
         scope: $scope,
         buttons: [
           { text: 'Got it!', type: 'button-block' }

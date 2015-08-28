@@ -17,8 +17,8 @@ angular.module('app.service.map', [])
        * @returns {{url: string }}
        */
       getStreetView: function (lat, lng) {
-        var width = 600;
-        var height = 400;
+        var width = 800;
+        var height = 250;
         var url = "https://maps.googleapis.com/maps/api/streetview?size="+width+"x"+height+"&location="+lat+","+lng;
         return url;
       }

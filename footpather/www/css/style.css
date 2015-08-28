@@ -231,4 +231,19 @@ p.description {
   color: gray;
 }
 
+.side-bar #side-avatar {
+  margin-bottom: 20%;
+}
 
+.side-bar, .side-bar .item {
+  background: #4d525b;
+}
+
+.side-bar .item {
+  border: 1px solid #2d2d2d;
+  padding-left: 10%;
+}
+
+.side-bar * {
+  color: white;
+}

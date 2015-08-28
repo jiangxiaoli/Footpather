@@ -350,24 +350,21 @@ angular.module('app.controller.home', [])
 
       //http://stackoverflow.com/questions/25310234/ionic-framework-two-popups-in-tandem
       $timeout( function () {
-        var reportEditPopup = $ionicPopup.show({
+        $scope.reportEditPopup = $ionicPopup.show({
           template: '<input type="password" ng-model="data.wifi">',
-          title: 'Report An Incident',
           templateUrl: "templates/reportEditPopup.html",
           cssClass:"report-edit-popup",
           scope: $scope,
           buttons: [
-            { text: 'Cancel' },
             {
               text: '<b>Save</b>',
-              type: 'button-positive',
               onTap: function(e) {
                 return $scope.newReport.description || "";
               }
             }
           ]
         });
-        reportEditPopup.then(function (res) {
+        $scope.reportEditPopup.then(function (res) {
           if(res) {
             $scope.newReport.latitude = $scope.currlat;
             $scope.newReport.longitude = $scope.currlng;
@@ -383,6 +380,10 @@ angular.module('app.controller.home', [])
           }
         });
       }, 500);
+    };
+
+    $scope.hideEditReportPopup = function () {
+      $scope.reportEditPopup.close();
     };
 
     $scope.likeReport = function (report) {

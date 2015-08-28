@@ -144,26 +144,31 @@
     <div class="row text-center">
       <div class="col col-33" ng-click="showEditReportPopup('suspect')">
         <img ng-src="/img/buttons/report-suspect-btn.png" height="80px"/>
-        <h4 class="stable">Suspect</h4>
+        <h4 class="stable h-nohigh">Suspect</h4>
       </div>
       <div class="col col-33" ng-click="showEditReportPopup('animal')">
         <img ng-src="/img/buttons/report-animal-btn.png" height="80px"/>
-        <h4 class="stable">Animal</h4>
+        <h4 class="stable h-nohigh">Animal</h4>
       </div>
       <div class="col" ng-click="showEditReportPopup('insident')">
         <img ng-src="/img/buttons/report-insident-btn.png" height="80px"/>
-        <h4 class="stable">Insident</h4>
+        <h4 class="stable h-nohigh">Insident</h4>
       </div>
     </div>
-    <button id="top-report-btn" ng-click="hideReportMenuPopup()" class="button button-icon icon"></button>
+    <button ng-click="hideReportMenuPopup()" class="button button-icon icon top-report-btn"></button>
   </script>
 
   <script id="templates/reportEditPopup.html" type="text/ng-template">
-    <div class="">
+    <button id="top-report-edit-close-btn" class="button button-icon icon" ng-click="hideEditReportPopup()"></button>
+    <div class="text-center">
       <!--mapping type to icon name-->
-      <img ng-src="/img/buttons/report-{{newReport.type}}-btn.png" alt="" height="80px"/>
+
+      <h3>Report</h3>
+      <img ng-src="/img/buttons/report-{{newReport.type}}-btn.png" alt="" height="100px"/>
+      <h3>{{newReport.type}}</h3>
       <input type="text" ng-model="newReport.description" placeholder="Description..."/>
     </div>
+    <button id="top-report-edit-btn" class="button button-icon icon top-report-btn"></button>
   </script>
 
   <script id="templates/helpPopup.html" type="text/ng-template">

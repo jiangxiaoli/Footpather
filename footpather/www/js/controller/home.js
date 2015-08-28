@@ -313,12 +313,12 @@ angular.module('app.controller.home', [])
       $scope.reportMenuPop = $ionicPopup.show({
         templateUrl: "templates/reportMenuPopup.html",
         cssClass:"report-menu-popup",
-        title: "Report An Incident",
-        scope: $scope,
-        buttons: [
-          { text: 'Done' }
-        ]
+        scope: $scope
       });
+    };
+
+    $scope.hideReportMenuPopup = function () {
+      $scope.reportMenuPop.close();
     };
 
     $scope.showHelpPopup = function () {

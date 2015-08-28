@@ -51,7 +51,8 @@ body {
 #navigate-btn,
 #stop-navigate-btn,
 #report-btn,
-#refresh-map-btn {
+#refresh-map-btn,
+#top-report-btn {
   position: absolute;
   background-size: 100px;
   width: 100px;
@@ -114,7 +115,24 @@ body {
 }
 
 .report-menu-popup .popup {
-  top: 60%;
+  top: 63%;
+  background-image: url("/img/bg/report-menu-bg.png");
+  background-size: 95%;
+  height: 42%;
+  left: 3%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.report-menu-popup .popup .popup-head {
+  display: none;
+}
+
+#top-report-btn {
+  position: fixed;
+  background-image: url("/img/buttons/report-btn.png");
+  top: 22%;
+  left:0;
 }
 
 .report-edit-popup .popup {

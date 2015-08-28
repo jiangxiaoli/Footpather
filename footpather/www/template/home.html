@@ -141,18 +141,27 @@
   </script>
 
   <script id="templates/reportMenuPopup.html" type="text/ng-template">
-    <div class="">
-      <!-- Passing 4 types: suspecious, location, animal, others -->
-      <img ng-src="/img/icons/girl.png" height="120px" ng-click="showEditReportPopup('girl')"/>
-      <img ng-src="/img/icons/crime.png" height="120px" ng-click="showEditReportPopup('crime')"/>
-      <img ng-src="/img/icons/offender.png" height="120px" ng-click="showEditReportPopup('offender')"/>
+    <div class="row text-center">
+      <div class="col col-33" ng-click="showEditReportPopup('suspect')">
+        <img ng-src="/img/buttons/report-suspect-btn.png" height="80px"/>
+        <h4 class="stable">Suspect</h4>
+      </div>
+      <div class="col col-33" ng-click="showEditReportPopup('animal')">
+        <img ng-src="/img/buttons/report-animal-btn.png" height="80px"/>
+        <h4 class="stable">Animal</h4>
+      </div>
+      <div class="col" ng-click="showEditReportPopup('insident')">
+        <img ng-src="/img/buttons/report-insident-btn.png" height="80px"/>
+        <h4 class="stable">Insident</h4>
+      </div>
     </div>
+    <button id="top-report-btn" ng-click="hideReportMenuPopup()" class="button button-icon icon"></button>
   </script>
 
   <script id="templates/reportEditPopup.html" type="text/ng-template">
     <div class="">
       <!--mapping type to icon name-->
-      <img ng-src="/img/icons/{{newReport.type}}.png" alt="" height="80px"/>
+      <img ng-src="/img/buttons/report-{{newReport.type}}-btn.png" alt="" height="80px"/>
       <input type="text" ng-model="newReport.description" placeholder="Description..."/>
     </div>
   </script>

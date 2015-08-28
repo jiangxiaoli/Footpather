@@ -298,10 +298,9 @@ angular.module('app.controller.home', [])
       //show pop
       $ionicPopup.show({
         templateUrl: "templates/reportPopup.html",
-        //title: report.type,
+        cssClass: "report-popup",
         scope: $scope,
         buttons: [
-          { text: 'Like' },
           { text: 'Got it!' }
         ]
       });

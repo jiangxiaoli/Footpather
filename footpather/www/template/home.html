@@ -25,7 +25,7 @@
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
       <div class="text-center">
-        <h5>{{currCrime.incident_type_name | uppercase }}</h5>
+        <h5 class="h-nohigh">{{currCrime.incident_type_name | uppercase }}</h5>
         <p class="description">Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mm a'}}</p>
         <img ng-src="{{streetViewUrl}}" height="120px">
 
@@ -42,13 +42,12 @@
     </marker>
     <script id="templates/offenderPopup.html" type="text/ng-template">
       <div class="text-center">
-        <img ng-src="{{currOffender.photoUrl}}" alt="offender photo" height="120px"/>
-        <h4>{{currOffender.name}}</h4>
+        <img class="clip-circle" ng-src="{{currOffender.photoUrl}}" alt="offender photo" height="100px"/>
+        <h5 class="text-grey h-nohigh">{{currOffender.name}}</h5>
+        <p class="text-grey">{{currOffender.address}}</p>
       </div>
-      <div class="row">
-        <div class="col col-33 text-right">Address:</div>
-        <div class="col">{{currOffender.address}}</div>
-      </div>
+      <!--overlay center icon-->
+      <img class="top-center-icon" ng-src="/img/mappin/offender.png"/>
     </script>
 
     <!--report markers-->
@@ -60,19 +59,13 @@
     <script id="templates/reportPopup.html" type="text/ng-template">
       <div class="text-center report">
         <h4>{{currReport.type | uppercase}} </h4>
-        <h6>Time: {{currReport.date | date:'MM/dd/yyyy @ h:mm a'}}</h6>
+        <div class="pull-top-right button button-small border-green" ng-click="likeReport(currReport)">
+          <h5 class="text-green">{{currReport.likes}} Likes</h5>
+        </div>
+        <h5 class="text-grey">Time: {{currReport.date | date:'MM/dd/yyyy @ h:mm a'}}</h5>
         <p class="description">{{currReport.description}}</p>
         <img ng-src="/img/mappin/{{currReport.type}}.png" alt="" height="80px"/>
       </div>
-      <!--<div>-->
-        <!--<button class="button button-outline">Like</button>-->
-        <!--<button class="button button-outline">Got it!</button>-->
-
-            <!--<h4>Likes: {{currReport.likes}}</h4>-->
-            <!--<button class="button button-outline button-assertive" ng-click="likeReport(currReport)">Like</button>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="/img/mappin/{{currReport.type}}.png"/>
     </script>
@@ -85,8 +78,8 @@
     </marker>
     <script id="templates/placePopup.html" type="text/ng-template">
       <div class="text-center">
-        <h4>{{currPlace.name}}</h4>
-        <h6>{{currPlace.vicinity}}</h6>
+        <h4 class="h-inlinehigh">{{currPlace.name}}</h4>
+        <h5 class="h-inlinehigh text-grey">{{currPlace.vicinity}}</h5>
       </div>
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="/img/mappin/place.png"/>

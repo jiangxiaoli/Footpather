@@ -18,6 +18,27 @@ body {
   margin: 20px;
 }
 
+.text-grey {
+  color: #9b9b9b;
+}
+
+.bg-grey {
+  background: #9b9b9b;
+}
+
+.border-green {
+  border-color: #5CC99F;
+}
+
+.text-green {
+  color: #5CC99F;
+}
+
+/*for image clip*/
+.clip-circle {
+  border-radius: 50%;
+}
+
 /*header bar*/
 .grey-hearder {
   background-color: #F1EEE9 !important;
@@ -41,7 +62,7 @@ body {
 
 #side-avatar-img {
   width: 30%;
-  margin: 10px;
+  margin: 20px;
 }
 
 /*** home page ***/
@@ -103,7 +124,7 @@ body {
 /*popup center icon*/
 .top-center-icon {
   position: fixed;
-  top: 43%;
+  top: 41%;
   left: 43%;
   width: 15%;
 }
@@ -126,19 +147,22 @@ body {
 
 .offender-popup .popup,
 .place-popup .popup,
-.crime-popup .popup {
+.crime-popup .popup,
+.report-popup .popup{
   background: #ffffff;
 }
 
 .offender-popup .popup-buttons .button,
 .place-popup .popup-buttons .button,
-.crime-popup .popup-buttons .button {
+.crime-popup .popup-buttons .button,
+.report-popup .popup-buttons .button{
   min-height: 30px !important;
 }
 
 .offender-popup .popup-buttons,
 .place-popup .popup-buttons,
-.crime-popup .popup-buttons {
+.crime-popup .popup-buttons,
+.report-popup .popup-buttons {
   min-height: 40px !important;
 }
 

@@ -6,18 +6,22 @@
   <map center="current-location" zoom="16" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-drag-end="refreshMap()">
 
     <!--buttons-->
-    <button id="find-me-btn" ng-click="centerOnMe()" class="button icon ion-pinpoint"></button>
-    <button id="help-me-btn" ng-click="showHelpPopup()" class="button icon-left ion-alert button-assertive">HELP ME!</button>
-    <button id="report-btn" ng-click="showReportMenuPopup()" class="button icon-left ion-speakerphone button-stable">Report</button>
-    <button id="navigate-btn" ng-click="navModal.show()" ng-show="!inNavigate" class="button icon-left ion-map button-stable">Navigate</button>
-    <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-stable">Stop Navigate</button>
+    <button id="find-me-btn" ng-click="centerOnMe()" class="button button-icon icon"></button>
+    <button id="help-me-btn" ng-click="showHelpPopup()" class="button button-icon icon"></button>
+    <button id="report-btn" ng-click="showReportMenuPopup()" class="button button-icon icon"></button>
+    <button id="navigate-btn" ng-click="navModal.show()" ng-show="!inNavigate" class="button button-icon icon"></button>
+    <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-icon icon"></button>
     <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
 
     <!--current locaiton marker-->
     <marker position="current-location"></marker>
 
     <!--crime markers-->
-    <marker ng-repeat="crime in crimereports.crimes" on-click="showCrimePopup(crime)" position="[{{crime.lat}}, {{crime.lng}}]" icon="/img/icons/crime.png">
+    <marker ng-repeat="crime in crimereports.crimes"
+            on-click="showCrimePopup(crime)"
+            position="[{{crime.lat}}, {{crime.lng}}]"
+            icon="/img/mappin/crime.png"
+            icon-size="20px">
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
       <div class="text-center">
@@ -25,11 +29,14 @@
         <h5>Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mma'}}</h5>
       </div>
       <!--overlay center icon-->
-      <img class="top-center-icon" ng-src="/img/icons/crime.png"/>
+      <img class="top-center-icon" ng-src="/img/mappin/crime.png"/>
     </script>
 
     <!--sex offender markers-->
-    <marker ng-repeat="offender in crimereports.offenders" on-click="showOffenderPopup(offender)" position="[{{offender.lat}}, {{offender.lng}}]" icon="/img/icons/offender.png">
+    <marker ng-repeat="offender in crimereports.offenders"
+            on-click="showOffenderPopup(offender)"
+            position="[{{offender.lat}}, {{offender.lng}}]"
+            icon="/img/mappin/offender.png">
     </marker>
     <script id="templates/offenderPopup.html" type="text/ng-template">
       <div class="text-center">
@@ -43,7 +50,10 @@
     </script>
 
     <!--report markers-->
-    <marker ng-repeat="report in reports" on-click="showReportPopup(report)" position="[{{report.latitude}}, {{report.longitude}}]" icon="/img/icons/report.png">
+    <marker ng-repeat="report in reports"
+            on-click="showReportPopup(report)"
+            position="[{{report.latitude}}, {{report.longitude}}]"
+            icon="/img/icons/report.png">
     </marker>
     <script id="templates/reportPopup.html" type="text/ng-template">
       <div class="text-center">
@@ -66,7 +76,10 @@
     </script>
 
     <!--Place markers-->
-    <marker ng-repeat="place in places" on-click="showPlacePopup(place)" ng-show="place.opening_hours.open_now" position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]" icon="/img/icons/place.png">
+    <marker ng-repeat="place in places" on-click="showPlacePopup(place)"
+            ng-show="place.opening_hours.open_now"
+            position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]"
+            icon="/img/mappin/place.png">
     </marker>
     <script id="templates/placePopup.html" type="text/ng-template">
       <div class="text-center">
@@ -74,11 +87,13 @@
         <h6>{{currPlace.vicinity}}</h6>
       </div>
       <!--overlay center icon-->
-      <img class="top-center-icon" ng-src="/img/icons/place.png"/>
+      <img class="top-center-icon" ng-src="/img/mappin/place.png"/>
     </script>
 
     <!--user markers-->
-    <marker ng-repeat="user in users" position="[{{user.latitude}}, {{user.longitude}}]" icon="/img/icons/girl.png">
+    <marker ng-repeat="user in users"
+            position="[{{user.latitude}}, {{user.longitude}}]"
+            icon="/img/avatars/{{user.icon}}.png">
     </marker>
 
     <!--route - directions-->

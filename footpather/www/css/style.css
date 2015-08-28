@@ -10,6 +10,21 @@ body {
   top:5%;
 }
 
+/*header bar*/
+.grey-hearder {
+  background-color: #F1EEE9 !important;
+  height: 70px;
+  border-bottom: 2px solid #5CC99F !important;
+}
+
+.sidebar-icon {
+  background-image: url("/img/buttons/sidebar-btn.png") !important;
+  background-size: 60px !important;
+  width: 60px;
+  height: 60px;
+  margin-left: 20px;
+}
+
 /*** sidebar ***/
 #side-avatar {
   text-align: center;
@@ -38,32 +53,42 @@ body {
 #report-btn,
 #refresh-map-btn {
   position: absolute;
+  background-size: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 #help-me-btn {
   top: 10%;
-  right: 5%;
+  right: 3%;
+  background-image: url("/img/buttons/help-btn.png");
 }
 
 #find-me-btn {
-  bottom: 15%;
-  right: 5%;
+  bottom: 18%;
+  right: 4%;
+  background-image: url("/img/buttons/findme-btn.png");
+  background-size: 90px;
+  width: 90px;
+  height: 90px;
 }
 
 #report-btn {
-  left: 5%;
-  bottom: 5%
+  left: 3%;
+  bottom: 2%;
+  background-image: url("/img/buttons/report-btn.png");
 }
 
 #navigate-btn,
 #stop-navigate-btn {
-  bottom: 5%;
-  right: 5%;
+  bottom: 2%;
+  right: 3%;
+  background-image: url("/img/buttons/navigate-btn.png");
 }
 
 #refresh-map-btn {
-  bottom: 25%;
-  right: 5%;
+  bottom: 20%;
+  right: 3%;
 }
 
 /*popup center icon*/

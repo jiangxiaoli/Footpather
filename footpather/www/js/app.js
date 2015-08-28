@@ -82,12 +82,12 @@ angular.module('app', ['ionic','ngMap', 'ion-autocomplete',
   $scope.isWelcome = false;
   console.log($scope.isWelcome);
 
-  if($location.$$path === "/welcome") {
+  if($location.$$path === "/welcome" || $location.$$path === "/login") {
     $scope.isWelcome = true;
   } else {
     $scope.isWelcome = false;
   }
-    
+
   $rootScope.$on("change to welcome", function () {
     $scope.isWelcome = true;
   });

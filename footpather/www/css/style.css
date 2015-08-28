@@ -155,6 +155,19 @@ body {
   display: none;
 }
 
+.report-edit-popup .popup .popup-buttons {
+  border-radius: 5px;
+  background: #1ac09a;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.report-edit-textarea {
+  background-color: #F1F1F1;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
 .popup-buttons {
   margin: 0;
   padding: 0;
@@ -196,6 +209,55 @@ body {
   border: 1px solid #ef473a;
   top: 20%;
   width: 80%;
+}
+
+#navigateModal {
+  min-height: 34%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#navigateModal .bar-header {
+  background: #fff;
+  height: 50px;
+}
+
+#navigateModal .bar-header .title {
+  left: 30%;
+}
+
+#navigateModal .bar-header button {
+  font-size: 14px;
+  margin-right: 12px;
+  color: #b3b3b3;
+}
+
+#navigateModal .scroll-content {
+  padding: 0px;
+}
+
+#navigateModal .scroll .item {
+  background: #f8f8f8;
+  border:none;
+  margin: 0 20px 0 20px;
+}
+
+#navigateModal .scroll .list:first-child {
+  border-bottom: 1px solid #eeeeee !important;
+}
+
+#navigateModal .scroll .button {
+  margin-top: 25px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #1ac09a;
+  font-size: 1.3em;
+  background: #f8f8f8;
+  border-top: 1px solid #c5c5c5;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 55px;
 }
 
 /*** welcome page ***/

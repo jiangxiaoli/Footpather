@@ -119,21 +119,21 @@
 
         <div class="list">
           <label class="item item-input">
-            <span class="input-label">From</span>
+            <span class="input-label">From:</span>
             <ion-autocomplete ng-model="navigate.from"
                               item-view-value-key="view"
                               item-value-key="location"
                               items-method="getTestItems(query)"
-                              placeholder="Enter your start location..."
+                              placeholder="Enter your origin..."
                               items-clicked-method="fromLocSelect(callback)"></ion-autocomplete>
           </label>
           <label class="item item-input">
-            <span class="input-label">To</span>
+            <span class="input-label">To:</span>
             <ion-autocomplete ng-model="navigate.to"
                               item-view-value-key="view"
                               item-value-key="location"
                               items-method="getTestItems(query)"
-                              placeholder="Enter your end location..."
+                              placeholder="Enter your destination..."
                               items-clicked-method="toLocSelect(callback)"></ion-autocomplete>
           </label>
           <button class="button button-full button-positive" ng-click="calculateNavigation(navigate)">Start Navigate</button>
@@ -146,15 +146,15 @@
     <div class="row text-center">
       <div class="col col-33" ng-click="showEditReportPopup('suspect')">
         <img ng-src="/img/buttons/report-suspect-btn.png" height="80px"/>
-        <h4 class="stable h-nohigh">Suspect</h4>
+        <h5 class="stable h-nohigh">Suspect</h5>
       </div>
       <div class="col col-33" ng-click="showEditReportPopup('animal')">
         <img ng-src="/img/buttons/report-animal-btn.png" height="80px"/>
-        <h4 class="stable h-nohigh">Animal</h4>
+        <h5 class="stable h-nohigh">Animal</h5>
       </div>
       <div class="col" ng-click="showEditReportPopup('incident')">
         <img ng-src="/img/buttons/report-incident-btn.png" height="80px"/>
-        <h4 class="stable h-nohigh">Incident</h4>
+        <h5 class="stable h-nohigh">Incident</h5>
       </div>
     </div>
     <button ng-click="hideReportMenuPopup()" class="button button-icon icon top-report-btn"></button>
@@ -163,12 +163,11 @@
   <script id="templates/reportEditPopup.html" type="text/ng-template">
     <button id="top-report-edit-close-btn" class="button button-icon icon" ng-click="hideEditReportPopup()"></button>
     <div class="text-center">
+      <h4>Report</h4>
       <!--mapping type to icon name-->
-
-      <h3>Report</h3>
-      <img ng-src="/img/buttons/report-{{newReport.type}}-btn.png" alt="" height="100px"/>
-      <h3>{{newReport.type}}</h3>
-      <input type="text" ng-model="newReport.description" placeholder="Description..."/>
+      <img ng-src="/img/buttons/report-{{newReport.type}}-btn.png" alt="" height="80px"/>
+      <h4 class="h-nohigh">{{newReport.type}}</h4>
+      <textarea class="report-edit-textarea" rows="3" ng-model="newReport.description" placeholder="Description..."></textarea>
     </div>
     <button id="top-report-edit-btn" class="button button-icon icon top-report-btn"></button>
   </script>

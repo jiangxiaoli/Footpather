@@ -359,7 +359,7 @@ angular.module('app.controller.home', [])
           scope: $scope,
           buttons: [
             {
-              text: '<b>Save</b>',
+              text: '<b class="stable">Report</b>',
               onTap: function(e) {
                 return $scope.newReport.description || "";
               }

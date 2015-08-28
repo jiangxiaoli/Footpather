@@ -330,8 +330,8 @@ angular.module('app.controller.home', [])
         scope: $scope,
         buttons: [
           {
-            text: '<b>Call 911!</b>',
-            type: 'button-large button-assertive'
+            text: '<b class="stable">Call 911!</b>',
+            type: 'button-large'
           }
         ]
       });

@@ -14,7 +14,7 @@
     <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
 
     <!--current locaiton marker-->
-    <marker position="current-location"></marker>
+    <marker position="current-location" icon="/img/mappin/currloc.png"></marker>
 
     <!--crime markers-->
     <marker ng-repeat="crime in crimereports.crimes"
@@ -55,14 +55,14 @@
     <marker ng-repeat="report in reports"
             on-click="showReportPopup(report)"
             position="[{{report.latitude}}, {{report.longitude}}]"
-            icon="/img/icons/report.png">
+            icon="/img/mappin/{{report.type}}.png">
     </marker>
     <script id="templates/reportPopup.html" type="text/ng-template">
       <div class="text-center report">
         <h4>{{currReport.type | uppercase}} </h4>
         <h6>Time: {{currReport.date | date:'MM/dd/yyyy @ h:mm a'}}</h6>
         <p class="description">{{currReport.description}}</p>
-        <img ng-src="/img/icons/report.png" alt="" height="80px"/>
+        <img ng-src="/img/mappin/{{currReport.type}}.png" alt="" height="80px"/>
       </div>
       <!--<div>-->
         <!--<button class="button button-outline">Like</button>-->
@@ -74,7 +74,7 @@
         <!--</div>-->
       <!--</div>-->
       <!--overlay center icon-->
-      <img class="top-center-icon" ng-src="/img/icons/report.png"/>
+      <img class="top-center-icon" ng-src="/img/mappin/{{currReport.type}}.png"/>
     </script>
 
     <!--Place markers-->
@@ -145,16 +145,16 @@
   <script id="templates/reportMenuPopup.html" type="text/ng-template">
     <div class="row text-center">
       <div class="col col-33" ng-click="showEditReportPopup('suspect')">
-        <img ng-src="/img/buttons/report-suspect-btn.png" height="80px"/>
-        <h5 class="stable h-nohigh">Suspect</h5>
+        <img ng-src="/img/buttons/report-suspect-btn.png" height="70px"/>
+        <h4 class="stable h-nohigh">Suspect</h4>
       </div>
       <div class="col col-33" ng-click="showEditReportPopup('animal')">
-        <img ng-src="/img/buttons/report-animal-btn.png" height="80px"/>
-        <h5 class="stable h-nohigh">Animal</h5>
+        <img ng-src="/img/buttons/report-animal-btn.png" height="70px"/>
+        <h4 class="stable h-nohigh">Animal</h4>
       </div>
       <div class="col" ng-click="showEditReportPopup('incident')">
-        <img ng-src="/img/buttons/report-incident-btn.png" height="80px"/>
-        <h5 class="stable h-nohigh">Incident</h5>
+        <img ng-src="/img/buttons/report-incident-btn.png" height="70px"/>
+        <h4 class="stable h-nohigh">Incident</h4>
       </div>
     </div>
     <button ng-click="hideReportMenuPopup()" class="button button-icon icon top-report-btn"></button>

@@ -155,8 +155,21 @@ body {
   display: none;
 }
 
-.report-edit-popup .popup .popup-button{
+.popup-buttons {
+  margin: 0;
+  padding: 0;
+  background: #e5e5e5;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 
+.popup-buttons button{
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #1ac09a;
+  font-size: 1.3em;
 }
 
 #top-report-edit-close-btn {
@@ -174,7 +187,12 @@ body {
  top: 65% !important;
 }
 
+.help-popup .popup-head {
+  border: none;
+}
+
 .help-popup .popup {
+  border: 1px solid #ef473a;
   top: 20%;
   width: 80%;
 }
@@ -206,3 +224,10 @@ h1.app-title {
 .signup-page h1, .login-page h1 {
   margin: 5% auto;
 }
+
+
+p.description {
+  color: gray;
+}
+
+

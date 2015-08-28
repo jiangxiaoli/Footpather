@@ -25,8 +25,10 @@
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
       <div class="text-center">
+        <h4>{{currCrime.incident_type_name | uppercase }}</h4>
+        <p class="description">Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mm a'}}</p>
         <img ng-src="{{streetViewUrl}}" height="100px">
-        <h5>Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mma'}}</h5>
+
       </div>
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="/img/mappin/crime.png"/>
@@ -56,21 +58,21 @@
             icon="/img/icons/report.png">
     </marker>
     <script id="templates/reportPopup.html" type="text/ng-template">
-      <div class="text-center">
-        <div class="row">
-          <div class="col col-50">
-            <!--mapping type to icon name-->
-            <img ng-src="/img/icons/report.png" alt="" height="80px"/>
-            <h4>{{currReport.type}} </h4>
-            <h5>{{currReport.description}}</h5>
-          </div>
-          <div class="col">
-            <h4>Time: {{currReport.date | date:'MM/dd/yyyy @ h:mma'}}</h4>
-            <h4>Likes: {{currReport.likes}}</h4>
-            <button class="button button-outline button-assertive" ng-click="likeReport(currReport)">Like</button>
-          </div>
-        </div>
+      <div class="text-center report">
+        <h4>{{currReport.type | uppercase}} </h4>
+        <h6>Time: {{currReport.date | date:'MM/dd/yyyy @ h:mm a'}}</h6>
+        <p class="description">{{currReport.description}}</p>
+        <img ng-src="/img/icons/report.png" alt="" height="80px"/>
       </div>
+      <!--<div>-->
+        <!--<button class="button button-outline">Like</button>-->
+        <!--<button class="button button-outline">Got it!</button>-->
+
+            <!--<h4>Likes: {{currReport.likes}}</h4>-->
+            <!--<button class="button button-outline button-assertive" ng-click="likeReport(currReport)">Like</button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="/img/icons/report.png"/>
     </script>
@@ -150,9 +152,9 @@
         <img ng-src="/img/buttons/report-animal-btn.png" height="80px"/>
         <h4 class="stable h-nohigh">Animal</h4>
       </div>
-      <div class="col" ng-click="showEditReportPopup('insident')">
-        <img ng-src="/img/buttons/report-insident-btn.png" height="80px"/>
-        <h4 class="stable h-nohigh">Insident</h4>
+      <div class="col" ng-click="showEditReportPopup('incident')">
+        <img ng-src="/img/buttons/report-incident-btn.png" height="80px"/>
+        <h4 class="stable h-nohigh">Incident</h4>
       </div>
     </div>
     <button ng-click="hideReportMenuPopup()" class="button button-icon icon top-report-btn"></button>
@@ -172,11 +174,11 @@
   </script>
 
   <script id="templates/helpPopup.html" type="text/ng-template">
-    <div class="text-center">
+    <div class="text-center stable">
       <h1 class="assertive">Help Me!</h1>
-      <button class="button button-small button-stable pull-top-right" ng-click="closeHelpPop()">Cancel</button>
-      <h3>Are you in danger?</h3>
-      <h4>Call 911 and Alert Nearby users!</h4>
+      <button class="button button-small pull-top-right" ng-click="closeHelpPop()">Cancel</button>
+      <h3>In danger?</h3>
+      <h4>Call 911 and alert others!</h4>
     </div>
   </script>
 

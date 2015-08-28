@@ -262,6 +262,7 @@ angular.module('app.controller.home', [])
     $scope.showCrimePopup = function (event, crime) {
 
       $scope.currCrime = crime;
+      console.log(crime);
 
       //get google map street view url
       $scope.streetViewUrl = map.getStreetView(crime.lat, crime.lng);
@@ -269,10 +270,10 @@ angular.module('app.controller.home', [])
       //show pop
       $ionicPopup.show({
         templateUrl: "templates/crimePopup.html",
-        title: crime.incident_type_name,
+        //title: crime.incident_type_name,
         scope: $scope,
         buttons: [
-          { text: 'Got it!' }
+          { text: 'Got it!', type: 'button-block' }
         ]
       });
 
@@ -295,9 +296,10 @@ angular.module('app.controller.home', [])
       //show pop
       $ionicPopup.show({
         templateUrl: "templates/reportPopup.html",
-        title: report.type,
+        //title: report.type,
         scope: $scope,
         buttons: [
+          { text: 'Like' },
           { text: 'Got it!' }
         ]
       });

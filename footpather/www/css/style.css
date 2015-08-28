@@ -159,6 +159,7 @@ body {
   margin: 0;
   padding: 0;
   background: #e5e5e5;
+  border-top: 1px solid #c5c5c5;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }

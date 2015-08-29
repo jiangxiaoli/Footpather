@@ -14,13 +14,13 @@
     <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
 
     <!--current locaiton marker-->
-    <marker position="current-location" icon="/img/mappin/currloc.png"></marker>
+    <marker position="current-location" icon="./img/mappin/currloc.png"></marker>
 
     <!--crime markers-->
     <marker ng-repeat="crime in crimereports.crimes"
             on-click="showCrimePopup(crime)"
             position="[{{crime.lat}}, {{crime.lng}}]"
-            icon="/img/mappin/crime.png"
+            icon="./img/mappin/crime.png"
             icon-size="20px">
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
@@ -31,14 +31,14 @@
 
       </div>
       <!--overlay center icon-->
-      <img class="top-center-icon" ng-src="/img/mappin/crime.png"/>
+      <img class="top-center-icon" ng-src="./img/mappin/crime.png"/>
     </script>
 
     <!--sex offender markers-->
     <marker ng-repeat="offender in crimereports.offenders"
             on-click="showOffenderPopup(offender)"
             position="[{{offender.lat}}, {{offender.lng}}]"
-            icon="/img/mappin/offender.png">
+            icon="./img/mappin/offender.png">
     </marker>
     <script id="templates/offenderPopup.html" type="text/ng-template">
       <div class="text-center">
@@ -47,14 +47,14 @@
         <p class="text-grey">{{currOffender.address}}</p>
       </div>
       <!--overlay center icon-->
-      <img class="top-center-icon" ng-src="/img/mappin/offender.png"/>
+      <img class="top-center-icon" ng-src="./img/mappin/offender.png"/>
     </script>
 
     <!--report markers-->
     <marker ng-repeat="report in reports"
             on-click="showReportPopup(report)"
             position="[{{report.latitude}}, {{report.longitude}}]"
-            icon="/img/mappin/{{report.type}}.png">
+            icon="./img/mappin/{{report.type}}.png">
     </marker>
     <script id="templates/reportPopup.html" type="text/ng-template">
       <div class="text-center report">
@@ -64,17 +64,17 @@
         </div>
         <h5 class="text-grey">Time: {{currReport.date | date:'MM/dd/yyyy @ h:mm a'}}</h5>
         <p class="description">{{currReport.description}}</p>
-        <img ng-src="/img/mappin/{{currReport.type}}.png" alt="" height="80px"/>
+        <img ng-src="./img/mappin/{{currReport.type}}.png" alt="" height="80px"/>
       </div>
       <!--overlay center icon-->
-      <img class="top-center-icon" ng-src="/img/mappin/{{currReport.type}}.png"/>
+      <img class="top-center-icon" ng-src="./img/mappin/{{currReport.type}}.png"/>
     </script>
 
     <!--Place markers-->
     <marker ng-repeat="place in places" on-click="showPlacePopup(place)"
             ng-show="place.opening_hours.open_now"
             position="[{{place.geometry.location.lat}}, {{place.geometry.location.lng}}]"
-            icon="/img/mappin/place.png">
+            icon="./img/mappin/place.png">
     </marker>
     <script id="templates/placePopup.html" type="text/ng-template">
       <div class="text-center">
@@ -82,13 +82,13 @@
         <h5 class="h-inlinehigh text-grey">{{currPlace.vicinity}}</h5>
       </div>
       <!--overlay center icon-->
-      <img class="top-center-icon" ng-src="/img/mappin/place.png"/>
+      <img class="top-center-icon" ng-src="./img/mappin/place.png"/>
     </script>
 
     <!--user markers-->
     <marker ng-repeat="user in users"
             position="[{{user.latitude}}, {{user.longitude}}]"
-            icon="/img/avatars/{{user.icon}}.png">
+            icon="./img/avatars/{{user.icon}}.png">
     </marker>
 
     <!--route - directions-->
@@ -138,15 +138,15 @@
   <script id="templates/reportMenuPopup.html" type="text/ng-template">
     <div class="row text-center">
       <div class="col col-33" ng-click="showEditReportPopup('suspect')">
-        <img ng-src="/img/buttons/report-suspect-btn.png" height="70px"/>
+        <img ng-src="./img/buttons/report-suspect-btn.png" height="70px"/>
         <h4 class="stable h-nohigh">Suspect</h4>
       </div>
       <div class="col col-33" ng-click="showEditReportPopup('animal')">
-        <img ng-src="/img/buttons/report-animal-btn.png" height="70px"/>
+        <img ng-src="./img/buttons/report-animal-btn.png" height="70px"/>
         <h4 class="stable h-nohigh">Animal</h4>
       </div>
       <div class="col" ng-click="showEditReportPopup('incident')">
-        <img ng-src="/img/buttons/report-incident-btn.png" height="70px"/>
+        <img ng-src="./img/buttons/report-incident-btn.png" height="70px"/>
         <h4 class="stable h-nohigh">Incident</h4>
       </div>
     </div>
@@ -158,7 +158,7 @@
     <div class="text-center">
       <h4>Report</h4>
       <!--mapping type to icon name-->
-      <img ng-src="/img/buttons/report-{{newReport.type}}-btn.png" alt="" height="80px"/>
+      <img ng-src="./img/buttons/report-{{newReport.type}}-btn.png" alt="" height="80px"/>
       <h4 class="h-nohigh">{{newReport.type}}</h4>
       <textarea class="report-edit-textarea" rows="3" ng-model="newReport.description" placeholder="Description..."></textarea>
     </div>

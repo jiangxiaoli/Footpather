@@ -62,7 +62,7 @@ angular.module('app', ['ionic','ngMap', 'ion-autocomplete',
     });
 
 
-  $urlRouterProvider.otherwise("home");
+  $urlRouterProvider.otherwise("welcome");
 
 })
 .run(function($ionicPlatform) {

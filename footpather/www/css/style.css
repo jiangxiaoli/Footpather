@@ -68,11 +68,12 @@ body {
 #side-avatar {
   text-align: center;
   margin: 20px;
+  font-size: 1.1em;
 }
 
 #side-avatar-img {
   width: 30%;
-  margin: 20px;
+  margin: 20px auto 0;
 }
 
 /*** home page ***/
@@ -446,6 +447,8 @@ p.description {
 
 .side-bar, .side-bar .item {
   background: #4d525b;
+  min-height: 50px;
+  font-size: 1.1em;
 }
 
 .side-bar .item {
@@ -453,8 +456,9 @@ p.description {
   padding-left: 10%;
 }
 
-.side-bar * {
+.side-bar h2, .side-bar h4 {
   color: white;
+  font-size: 1.1em;
 }
 
 /*** sign in ***/

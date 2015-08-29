@@ -59,7 +59,7 @@
     <script id="templates/reportPopup.html" type="text/ng-template">
       <div class="text-center report">
         <h4>{{currReport.type | uppercase}} </h4>
-        <div class="pull-top-right button button-small border-green" ng-click="likeReport(currReport)">
+        <div class="pull-top-right button button-small border-green like-btn" ng-click="likeReport(currReport)">
           <h5 class="text-green">{{currReport.likes}} Likes</h5>
         </div>
         <h5 class="text-grey">Time: {{currReport.date | date:'MM/dd/yyyy @ h:mm a'}}</h5>

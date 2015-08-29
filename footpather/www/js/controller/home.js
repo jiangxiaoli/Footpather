@@ -17,38 +17,29 @@ angular.module('app.controller.home', [])
     //styling of maps
     var styleArray = [ //any style array defined in the google documentation you linked
       {
-        featureType: "landscape",
-        elementType: "all",
-        visibility: "simplified",
+        featureType: "all",
         stylers: [
-          { color: "#fffbf7" }
+          { hue: "#00ff88" },
+          { saturation: -66 },
+          { lightness: 42 },
+          { Gamma: 0.85 },
+          { visibility: "simplified"}
         ]
       },{
-        featureType: "road.highway",
+        featureType: "landscape.man_made",
         elementType: "all",
-        visibility: "simplified",
         stylers: [
-          { color: "#57ca9e"},
-          { saturation: -22 },
-          { lightness: 34 },
-          { Gamma: 1.22 }
+          { hue: "#ffbb00" },
+          { saturation: 14 },
+          { lightness: 19 }
         ]
       },{
-        featureType: "road.local",
-        elementType: "all",
-        visibility: "on",
+        featureType: "poi.business",
+        elementType: "labels",
         stylers: [
-          { saturation: 10 },
-          { lightness: 57 }
+          { visibility: "off" }
         ]
-      },{
-        featureType: "road.arterial",
-        elementType: "all",
-        visibility: "on",
-        stylers: [
-          { lightness: 35 }
-        ]
-        }
+      }
 ];
     $scope.styles = styleArray;
 

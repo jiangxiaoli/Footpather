@@ -5,7 +5,7 @@
     <button class="button button-icon icon sidebar-icon" ng-click="toggleLeft()" ng-hide="$exposeAside.active"></button>
   </ion-header-bar>
 
-  <map center="current-location" zoom="15" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-drag-end="refreshMap()">
+  <map zoom="15" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-drag-end="refreshMap()">
 
     <!--buttons-->
     <button id="find-me-btn" ng-click="centerOnMe()" class="button button-icon icon"></button>
@@ -16,7 +16,7 @@
     <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
 
     <!--current locaiton marker-->
-    <marker position="current-location" icon="./img/mappin/currloc.png"></marker>
+    <marker position="[{{currlat}}, {{currlng}}]" icon="./img/mappin/currloc.png"></marker>
 
     <!--crime markers-->
     <marker ng-repeat="crime in crimereports.crimes"

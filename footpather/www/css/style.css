@@ -297,8 +297,8 @@ body {
 }
 
 #navigateModal {
-  margin-top: 5px;
-  min-height: 32%;
+  margin-top: 20px;
+  min-height: 34%;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -333,7 +333,7 @@ body {
 }
 
 #navigateModal .scroll .button {
-  margin-top: 26px;
+  margin: 37px auto 0;
   padding: 0;
   background: none;
   border: none;

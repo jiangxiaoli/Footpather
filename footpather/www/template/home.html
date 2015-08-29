@@ -5,7 +5,7 @@
     <button class="button button-icon icon sidebar-icon" ng-click="toggleLeft()" ng-hide="$exposeAside.active"></button>
   </ion-header-bar>
 
-  <map center="current-location" zoom="15" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-drag-end="refreshMap()">
+  <map zoom="15" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-drag-end="refreshMap()">
 
     <!--buttons-->
     <button id="find-me-btn" ng-click="centerOnMe()" class="button button-icon icon"></button>
@@ -16,7 +16,7 @@
     <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
 
     <!--current locaiton marker-->
-    <marker position="current-location" icon="./img/mappin/currloc.png"></marker>
+    <marker position="[{{currlat}}, {{currlng}}]" icon="./img/mappin/currloc.png"></marker>
 
     <!--crime markers-->
     <marker ng-repeat="crime in crimereports.crimes"
@@ -27,7 +27,9 @@
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
       <div class="text-center">
-        <h4 class="h-nohigh">{{currCrime.incident_type_name | uppercase }}</h4>
+        <h4 class="h-nohigh">{{currCrime.incident_type_name | uppercase | limitTo: 30 }}{{
+          currCrime.incident_type_name.length > 30 ? '...' : ''}}
+        </h4>
         <p class="description">Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mm a'}}</p>
         <img ng-src="{{streetViewUrl}}" height="120px">
 
@@ -144,8 +146,9 @@
                               placeholder="Enter destination"
                               items-clicked-method="toLocSelect(callback)"></ion-autocomplete>
           </label>
-          <button class="button button-full button-positive" ng-click="calculateNavigation(navigate)">Start Navigate</button>
+
         </div>
+        <button class="button button-full button-positive" ng-click="calculateNavigation(navigate)">Start Navigation</button>
       </ion-content>
     </ion-modal-view>
   </script>

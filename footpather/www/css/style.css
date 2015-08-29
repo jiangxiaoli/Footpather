@@ -459,9 +459,14 @@ p.description {
 .login-btn {
   background: #55be7f;
   border-radius: 5px;
-  width: 95% !important;
+  width: 96% !important;
   border: none;
   margin-left: 2%;
   color: #fff !important;
   font-weight: bold;
+}
+
+a.link, p.link {
+  color: white;
+  text-decoration: none;
 }

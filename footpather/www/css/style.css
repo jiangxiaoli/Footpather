@@ -1,4 +1,3 @@
-/* Empty. Add your own CSS if you like */
 
 body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
@@ -349,8 +348,37 @@ h1.app-title {
   font-size: 15px;
 }
 
-.bar-footer a.button {
-  width: 48%;
+.welcome-btns {
+  height: 55px;
+  background: #1D989A;
+  padding: 0;
+  margin: 0;
+}
+
+.welcome-btns a.welcome {
+  width: 50%;
+  background: #1D989A;
+  color: white;
+  font-size: 1.1em;
+  border: 1px solid #198789;
+  border-radius: 0;
+  padding-top: 2%;
+  position: relative;
+}
+
+.bar > .button + .button:last-child {
+  top: 0;
+  right : 0;
+  bottom: 0;
+}
+
+.icon.ion-record {
+  color: white;
+}
+
+.slider-pager {
+  bottom: 60px;
+  font-size: 0.7em;
 }
 
 /*override pane*/

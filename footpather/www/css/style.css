@@ -165,7 +165,7 @@ body {
 .place-popup .popup-buttons .button,
 .crime-popup .popup-buttons .button,
 .report-popup .popup-buttons .button{
-  min-height: 30px !important;
+  min-height: 50px !important;
 }
 
 .offender-popup .popup-buttons,

@@ -213,7 +213,7 @@ angular.module('app.controller.home', [])
       $scope.currOffender = offender;
       $ionicPopup.show({
         templateUrl: "templates/offenderPopup.html",
-        title: "Registered Sex Offender",
+        //title: "Registered Sex Offender",
         cssClass: "offender-popup",
         scope: $scope,
         buttons: [
@@ -271,7 +271,7 @@ angular.module('app.controller.home', [])
         cssClass: "crime-popup",
         scope: $scope,
         buttons: [
-          { text: 'Got it!', type: 'button-block' }
+          { text: 'Got it!' }
         ]
       });
 

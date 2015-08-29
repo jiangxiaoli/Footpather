@@ -25,7 +25,7 @@
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
       <div class="text-center">
-        <h5 class="h-nohigh">{{currCrime.incident_type_name | uppercase }}</h5>
+        <h4 class="h-nohigh">{{currCrime.incident_type_name | uppercase }}</h4>
         <p class="description">Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mm a'}}</p>
         <img ng-src="{{streetViewUrl}}" height="120px">
 
@@ -42,6 +42,7 @@
     </marker>
     <script id="templates/offenderPopup.html" type="text/ng-template">
       <div class="text-center">
+        <h4>Registered Sex Offender</h4>
         <img class="clip-circle" ng-src="{{currOffender.photoUrl}}" alt="offender photo" height="100px"/>
         <h5 class="text-grey h-nohigh">{{currOffender.name}}</h5>
         <p class="text-grey">{{currOffender.address}}</p>

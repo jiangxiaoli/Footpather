@@ -63,6 +63,7 @@ angular.module('app.controller.home', [])
     /**
      * Get user current location
      */
+    $scope.currLocation = {};
     function getCurrLoc(){
       $scope.loading = $ionicLoading.show({
         content: 'Getting current location...',
@@ -73,7 +74,26 @@ angular.module('app.controller.home', [])
         $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
         $scope.currlat = pos.coords.latitude;
         $scope.currlng = pos.coords.longitude;
-        getData($scope.currlat, $scope.currlng);
+
+        $scope.currLocation.lat = pos.coords.latitude;
+        $scope.currLocation.lng = pos.coords.longitude;
+
+        //query geocode for currLoc, to get the address
+
+        var latlng = $scope.currLocation.lat+","+$scope.currLocation.lng;
+
+        //use latlng to search in google geocode api
+        var params = {latlng: latlng, sensor: false};
+
+        //get current location address
+        $http.get(
+          'https://maps.googleapis.com/maps/api/geocode/json',
+          {params: params}
+        ).then(function(response) {
+            //use the first result
+            $scope.currLocation.address = response.data.results[0].formatted_address;
+            getData($scope.currlat, $scope.currlng);
+            });
       }, function(error) {
         alert('Unable to get location: ' + error.message);
       });
@@ -157,10 +177,12 @@ angular.module('app.controller.home', [])
     //prepare ion-complete for navigate inout, with auto complete address
     //the selected data is stored in ng-model for each selection
     $scope.getTestItems = function (query) {
-      var params = {address: query, sensor: false};
+      var params = {
+        address: query, sensor: false
+      };
       //need 2 return to pass query to selector
       return $http.get(
-        'https://maps.googleapis.com/maps/api/geocode/json',
+        'https://maps.googleapis.com/maps/api/geocode/json?',
         {params: params}
       ).then(function(response) {
           var results = response.data.results;
@@ -192,13 +214,26 @@ angular.module('app.controller.home', [])
     //modal form submit handling- get navigation object, calculate route
     $scope.calculateNavigation = function(navigate) {
       console.log(navigate);
-      if(navigate && navigate.from && navigate.to) {
-        //calculate the route
-        $scope.origin = navigate.from;
-        $scope.destination = navigate.to;
-        $scope.navModal.hide();
-        $scope.inNavigate = true;
-      }
+      //if(navigate && navigate.from && navigate.to) {
+      //  //calculate the route
+      //  $scope.origin = navigate.from;
+      //  $scope.destination = navigate.to;
+      //  $scope.navModal.hide();
+      //  $scope.inNavigate = true;
+      //}
+
+      if(navigate && navigate.to) {
+          //calculate the route
+
+          //hardcode original to current location
+          $scope.origin = {
+            lat: $scope.currLocation.lat,
+            lng: $scope.currLocation.lng
+          };
+          $scope.destination = navigate.to;
+          $scope.navModal.hide();
+          $scope.inNavigate = true;
+        }
     };
 
     $scope.clearRoute = function () {

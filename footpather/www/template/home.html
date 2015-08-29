@@ -129,12 +129,14 @@
         <div class="list">
           <label class="item item-input">
             <span class="input-label">From:</span>
-            <ion-autocomplete ng-model="navigate.from"
-                              item-view-value-key="view"
-                              item-value-key="location"
-                              items-method="getTestItems(query)"
-                              placeholder="Enter origin"
-                              items-clicked-method="fromLocSelect(callback)"></ion-autocomplete>
+            <!--<ion-autocomplete ng-model="navigate.from"-->
+                              <!--item-view-value-key="view"-->
+                              <!--item-value-key="location"-->
+                              <!--items-method="getTestItems(query)"-->
+                              <!--placeholder="Enter origin"-->
+                              <!--items-clicked-method="fromLocSelect(callback)"></ion-autocomplete>-->
+            <input type="text" value="{{currLocation.address}}"/>
+
           </label>
           <!--<hr>-->
           <label class="item item-input">

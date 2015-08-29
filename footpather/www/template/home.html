@@ -47,7 +47,7 @@
     <script id="templates/offenderPopup.html" type="text/ng-template">
       <div class="text-center">
         <h4>Registered Sex Offender</h4>
-        <img class="clip-circle" ng-src="{{currOffender.photoUrl}}" alt="offender photo" height="100px"/>
+        <img class="clip-circle" ng-src="{{currOffender.photoUrl}}" alt="offender photo" height="90px"/>
         <h5 class="text-grey h-nohigh">{{currOffender.name}}</h5>
         <p class="text-grey">{{currOffender.address.indexOf("Unmappable") > -1 ? "No address" : currOffender.address}}</p>
       </div>
@@ -101,7 +101,7 @@
       <div class="text-center">
         <h4>Footpather User</h4>
         <img ng-src="./img/popup-icons/users/{{currUser.icon}}.png" alt="" height="80px" />
-        <h4>{{currUser.user_name}}</h4>
+        <h4 class="after-user-img" >{{currUser.user_name}}</h4>
       </div>
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="./img/avatars/{{currUser.icon}}.png"/>
@@ -185,7 +185,7 @@
 
   <script id="templates/helpPopup.html" type="text/ng-template">
     <div class="text-center stable h-inlinehigh">
-      <h3 class="stable h-inlinehigh">Help Me!</h3>
+      <h3 class="stable h-inlinehigh">SOS</h3>
       <button class="button button-small pull-top-right help-cancel-btn" ng-click="closeHelpPop()">Cancel</button>
       <h4 class="stable h-inlinehigh">In danger?</h4>
       <h4 class="stable h-inlinehigh">Call 911 and alert others!</h4>

@@ -14,11 +14,12 @@ body {
 }
 
 .h-inlinehigh {
-  margin: 20px auto 0;
+  margin: 15px auto 0;
 }
 
 .text-grey {
   color: #9b9b9b;
+  margin-bottom: 0;
 }
 
 .bg-grey {
@@ -36,7 +37,7 @@ body {
 .like-btn {
   height: 20px;
   border-radius: 5px;
-  margin-top: 8px;
+  margin-top: 20px;
 }
 
 .like-btn h5 {
@@ -156,7 +157,7 @@ body {
 
 .popup-head,
 .popup-body {
-  padding: 5px !important;
+  padding: 10px !important;
   border: none;
 }
 
@@ -247,8 +248,8 @@ body {
   padding: 0;
   background: #f8f8f8;
   border-top: 1px solid #c5c5c5;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .popup-buttons button{

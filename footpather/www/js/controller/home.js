@@ -96,7 +96,7 @@ angular.module('app.controller.home', [])
             });
       }, function(error) {
         alert('Unable to get location: ' + error.message);
-      });
+      }, { enableHighAccuracy: true });
     }
 
     /**
@@ -237,7 +237,6 @@ angular.module('app.controller.home', [])
     };
 
     $scope.clearRoute = function () {
-      //TODO how to clear direction
       $scope.inNavigate = false;
     };
 
@@ -402,7 +401,7 @@ angular.module('app.controller.home', [])
     $scope.newReport ={};
     $scope.showEditReportPopup = function (type) {
       $scope.reportMenuPop.close();
-      console.log(type);
+      //console.log(type);
 
       //Passing 4 types: suspecious, location, animal, others
       //TODO mapping types to icon name

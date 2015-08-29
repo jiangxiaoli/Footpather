@@ -193,13 +193,17 @@ body {
 }
 
 .report-menu-popup .popup .popup-body .row {
-  padding: 10px;
+  padding: 15px 20px 15px 32px
+}
+
+.report-menu-popup .popup .popup-body .col {
+  margin: auto -3px;
 }
 
 .top-report-btn {
   position: fixed !important;
   background-image: url("../img/buttons/report-btn.png");
-  top: 22%;
+  top: 23%;
   left: 3%;
 }
 
@@ -226,6 +230,7 @@ body {
   background-color: #F1F1F1;
   margin-top: 15px;
   border-radius: 5px;
+  padding: 10px;
 }
 
 .popup-buttons {
@@ -257,8 +262,8 @@ body {
 }
 
 #top-report-edit-btn {
- left: -8% !important;
- top: 65% !important;
+ left: -7% !important;
+ top: 66% !important;
 }
 
 .help-popup .popup-head {
@@ -457,12 +462,22 @@ p.description {
   margin: 5px 20px 5px 20px;
 }
 
+.login-input .item-input:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.login-input .item-input:last-of-type {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .login-btn {
   background: #55be7f;
   border-radius: 5px;
-  width: 96% !important;
+  width: 95% !important;
   border: none;
-  margin-left: 2%;
+  margin-left: 2.5%;
   color: #fff !important;
   font-weight: bold;
 }

@@ -419,25 +419,21 @@ angular.module('app.controller.home', [])
               text: '<b class="stable">Report</b>',
               type: 'btn-report',
               onTap: function(e) {
-                return $scope.newReport.description || "";
+                $scope.newReport.latitude = $scope.currlat;
+                $scope.newReport.longitude = $scope.currlng;
+
+                console.log($scope.newReport);
+
+                tile.submitReport($scope.newReport)
+                  .success(function(res){
+                    alert("Report submitted");
+                  }).error(function(err){
+                    alert("Add Report Error: " + err);
+                  });
+                //return $scope.newReport.description || "";
               }
             }
           ]
-        });
-        $scope.reportEditPopup.then(function (res) {
-          if(res) {
-            $scope.newReport.latitude = $scope.currlat;
-            $scope.newReport.longitude = $scope.currlng;
-
-            console.log($scope.newReport);
-
-            tile.submitReport($scope.newReport)
-              .success(function(res){
-                alert("Report submitted");
-              }).error(function(err){
-                alert("Add Report Error: " + err);
-              });
-          }
         });
       }, 500);
     };

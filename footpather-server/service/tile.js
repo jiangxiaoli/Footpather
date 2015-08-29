@@ -71,8 +71,8 @@ module.exports = {
                 });
             }
         }
-        console.log("current: " + row + ", " + col);
-        console.log("nearby: " + JSON.stringify(tiles, null, 4));
+        //console.log("current: " + row + ", " + col);
+        //console.log("nearby: " + JSON.stringify(tiles, null, 4));
         return tiles;
     },
 

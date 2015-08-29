@@ -7,13 +7,9 @@ angular.module('app.controller.home', [])
 
     console.log('HomeCtrl loaded');
 
-    user.stub();
-    tile.stub();
-    map.stub();
-    crimereport.stub();
     getCurrLoc();
 
-    $scope.map;
+    $scope.map = null;
     $scope.$on('mapInitialized', function(event, map) {
       $scope.map = map;
     });

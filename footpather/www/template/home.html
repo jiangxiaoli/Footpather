@@ -1,7 +1,9 @@
 <!--add scroll="false" data-tap-disabled="true" to enable on-click-->
 <ion-view title="Home" scroll="false" data-tap-disabled="true">
 
-
+  <ion-header-bar class="bar-stable grey-hearder" ng-controller="MainCtrl">
+    <button class="button button-icon icon sidebar-icon" ng-click="toggleLeft()" ng-hide="$exposeAside.active"></button>
+  </ion-header-bar>
 
   <map center="current-location" zoom="15" id="map" pan-control="false" zoom-control="false" scale-control="false" styles="{{styles}}" on-drag-end="refreshMap()">
 

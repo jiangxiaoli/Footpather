@@ -11,8 +11,8 @@
     <button id="find-me-btn" ng-click="centerOnMe()" class="button button-icon icon"></button>
     <button id="help-me-btn" ng-click="showHelpPopup()" class="button button-icon icon"></button>
     <button id="report-btn" ng-click="showReportMenuPopup()" class="button button-icon icon"></button>
-    <button id="navigate-btn" ng-click="navModal.show()" ng-show="!inNavigate" class="button button-icon icon"></button>
-    <button id="stop-navigate-btn" ng-click="clearRoute()" ng-show="inNavigate" class="button button-icon icon"></button>
+    <button id="navigate-btn" ng-click="navModal.show()" ng-if="!inNavigate" class="button button-icon icon"></button>
+    <button id="stop-navigate-btn" ng-click="clearRoute()" ng-if="inNavigate" class="button button-icon icon"></button>
     <!--<button id="refresh-map-btn" ng-click="refreshMap()" class="button button-stable">Refresh</button>-->
 
     <!--current locaiton marker-->

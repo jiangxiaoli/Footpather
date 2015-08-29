@@ -127,6 +127,10 @@ body {
   background-image: url("../img/buttons/navigate-btn.png");
 }
 
+#stop-navigate-btn {
+  background-image: url("../img/buttons/stop-btn.png");
+}
+
 #refresh-map-btn {
   bottom: 20%;
   right: 3%;

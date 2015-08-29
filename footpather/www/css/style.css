@@ -169,7 +169,7 @@ body {
   top: 63%;
   background-image: url("/img/bg/report-menu-bg.png");
   background-size: 100%;
-  height: 45%;
+  height: 55%;
   background-repeat: no-repeat;
   background-color: transparent;
 }
@@ -182,6 +182,9 @@ body {
   padding: 0 !important;
 }
 
+.report-menu-popup .popup .popup-body .row {
+  padding: 10px;
+}
 
 .top-report-btn {
   position: fixed !important;

@@ -27,7 +27,9 @@
     </marker>
     <script id="templates/crimePopup.html" type="text/ng-template">
       <div class="text-center">
-        <h4 class="h-nohigh">{{currCrime.incident_type_name | uppercase }}</h4>
+        <h4 class="h-nohigh">{{currCrime.incident_type_name | uppercase | limitTo: 30 }}{{
+          currCrime.incident_type_name.length > 30 ? '...' : ''}}
+        </h4>
         <p class="description">Time: {{currCrime.incident_date_time | date:'MM/dd/yyyy @ h:mm a'}}</p>
         <img ng-src="{{streetViewUrl}}" height="120px">
 

@@ -158,21 +158,24 @@ body {
 .offender-popup .popup,
 .place-popup .popup,
 .crime-popup .popup,
-.report-popup .popup{
+.report-popup .popup,
+.user-popup .popup {
   background: #ffffff;
 }
 
 .offender-popup .popup-buttons .button,
 .place-popup .popup-buttons .button,
 .crime-popup .popup-buttons .button,
-.report-popup .popup-buttons .button{
+.report-popup .popup-buttons .button,
+.user-popup .popup-buttons .button {
   min-height: 50px !important;
 }
 
 .offender-popup .popup-buttons,
 .place-popup .popup-buttons,
 .crime-popup .popup-buttons,
-.report-popup .popup-buttons {
+.report-popup .popup-buttons,
+.user-popup .popup-buttons {
   min-height: 40px !important;
 }
 

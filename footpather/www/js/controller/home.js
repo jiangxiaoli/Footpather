@@ -255,6 +255,30 @@ angular.module('app.controller.home', [])
     };
 
     /**
+     * Show open user popup
+     * @param event - marker click event
+     * @param user - the place for the marker
+     */
+    $scope.showUserPopup = function(event, user) {
+      $scope.currUser = user;
+      $ionicPopup.show({
+        templateUrl: "templates/userPopup.html",
+        cssClass: "user-popup",
+        scope: $scope,
+        buttons: [
+          { text: 'Got it!' }
+        ]
+      });
+
+      //recenter map
+      $scope.map.setCenter({
+        lat: user.latitude,
+        lng: user.longitude
+      });
+    };
+
+
+    /**
      * Show sex offender popup
      * @param event - marker click event
      * @param crime - the crime for the marker

@@ -67,7 +67,7 @@
         </div>
         <h5 class="text-grey">Time: {{currReport.date | date:'MM/dd/yyyy @ h:mm a'}}</h5>
         <p class="description">{{currReport.description}}</p>
-        <img ng-src="./img/mappin/{{currReport.type}}.png" alt="" height="80px"/>
+        <img ng-src="./img/popup-icons/{{currReport.type}}.png" alt="" height="80px"/>
       </div>
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="./img/mappin/{{currReport.type}}.png"/>
@@ -84,17 +84,26 @@
         <h4>OPEN NOW</h4>
         <h4 class="h-inlinehigh">{{currPlace.name}}</h4>
         <p class="text-grey">{{currPlace.vicinity}}</p>
-        <img ng-src="./img/mappin/place.png" alt="" height="80px" />
+        <img ng-src="./img/popup-icons/place.png" alt="" height="80px" />
       </div>
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="./img/mappin/place.png"/>
     </script>
 
     <!--user markers-->
-    <marker ng-repeat="user in users"
+    <marker ng-repeat="user in users" on-click="showUserPopup(user)"
             position="[{{user.latitude}}, {{user.longitude}}]"
             icon="./img/avatars/{{user.icon}}.png">
     </marker>
+    <script id="templates/userPopup.html" type="text/ng-template">
+      <div class="text-center">
+        <h4>Footpather User</h4>
+        <img ng-src="./img/popup-icons/users/{{currUser.icon}}.png" alt="" height="80px" />
+        <h4>{{currUser.user_name}}</h4>
+      </div>
+      <!--overlay center icon-->
+      <img class="top-center-icon" ng-src="./img/avatars/{{currUser.icon}}.png"/>
+    </script>
 
     <!--route - directions-->
     <directions ng-show="inNavigate"

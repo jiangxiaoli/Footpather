@@ -288,7 +288,8 @@ body {
 }
 
 #navigateModal {
-  min-height: 34%;
+  margin-top: 5px;
+  min-height: 32%;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -323,7 +324,7 @@ body {
 }
 
 #navigateModal .scroll .button {
-  margin-top: 25px;
+  margin-top: 26px;
   padding: 0;
   background: none;
   border: none;
@@ -470,3 +471,9 @@ a.link, p.link {
   color: white;
   text-decoration: none;
 }
+
+/*plan route*/
+.input-label {
+  max-width: 50px;
+}
+

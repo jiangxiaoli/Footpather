@@ -359,6 +359,7 @@ angular.module('app.controller.home', [])
           buttons: [
             {
               text: '<b class="stable">Report</b>',
+              type: 'btn-report',
               onTap: function(e) {
                 return $scope.newReport.description || "";
               }

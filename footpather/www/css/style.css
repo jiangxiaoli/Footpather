@@ -60,6 +60,7 @@ body {
   background-size: 50px !important;
   width: 50px;
   height: 50px;
+  margin-top: -10px;
   margin-left: 15px;
 }
 
@@ -193,13 +194,17 @@ body {
 }
 
 .report-menu-popup .popup .popup-body .row {
-  padding: 10px;
+  padding: 15px 20px 15px 32px
+}
+
+.report-menu-popup .popup .popup-body .col {
+  margin: auto -3px;
 }
 
 .top-report-btn {
   position: fixed !important;
   background-image: url("../img/buttons/report-btn.png");
-  top: 22%;
+  top: 23%;
   left: 3%;
 }
 
@@ -218,14 +223,15 @@ body {
 .report-edit-popup .popup .popup-buttons {
   border-radius: 5px;
   background: #1ac09a;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin: 5px 5px 10px;
+  min-height: 5px;
 }
 
 .report-edit-textarea {
   background-color: #F1F1F1;
   margin-top: 15px;
   border-radius: 5px;
+  padding: 10px;
 }
 
 .popup-buttons {
@@ -257,8 +263,8 @@ body {
 }
 
 #top-report-edit-btn {
- left: -8% !important;
- top: 65% !important;
+ left: -7% !important;
+ top: 66% !important;
 }
 
 .help-popup .popup-head {
@@ -288,7 +294,8 @@ body {
 }
 
 #navigateModal {
-  min-height: 34%;
+  margin-top: 5px;
+  min-height: 32%;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -323,7 +330,7 @@ body {
 }
 
 #navigateModal .scroll .button {
-  margin-top: 25px;
+  margin-top: 26px;
   padding: 0;
   background: none;
   border: none;
@@ -449,19 +456,29 @@ p.description {
 
 /*** sign in ***/
 .login-logo{
-  margin: 40px;
+  margin: 40px 40px 30px 53px;
 }
 
 .login-input {
   margin: 5px 20px 5px 20px;
 }
 
+.login-input .item-input:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.login-input .item-input:last-of-type {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .login-btn {
   background: #55be7f;
   border-radius: 5px;
-  width: 96% !important;
+  width: 95% !important;
   border: none;
-  margin-left: 2%;
+  margin-left: 2.5%;
   color: #fff !important;
   font-weight: bold;
 }
@@ -469,4 +486,15 @@ p.description {
 a.link, p.link {
   color: white;
   text-decoration: none;
+}
+
+/*plan route*/
+.input-label {
+  max-width: 50px;
+}
+
+/*buttons*/
+.button.active, .button.activated {
+  border-color: #4c9e68;
+  background-color: #55ae6f;
 }

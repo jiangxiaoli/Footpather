@@ -122,16 +122,17 @@
                               item-view-value-key="view"
                               item-value-key="location"
                               items-method="getTestItems(query)"
-                              placeholder="Enter your origin..."
+                              placeholder="Enter origin"
                               items-clicked-method="fromLocSelect(callback)"></ion-autocomplete>
           </label>
+          <!--<hr>-->
           <label class="item item-input">
             <span class="input-label">To:</span>
             <ion-autocomplete ng-model="navigate.to"
                               item-view-value-key="view"
                               item-value-key="location"
                               items-method="getTestItems(query)"
-                              placeholder="Enter your destination..."
+                              placeholder="Enter destination"
                               items-clicked-method="toLocSelect(callback)"></ion-autocomplete>
           </label>
           <button class="button button-full button-positive" ng-click="calculateNavigation(navigate)">Start Navigate</button>
@@ -150,7 +151,7 @@
         <img ng-src="./img/buttons/report-animal-btn.png" height="70px"/>
         <h4 class="stable h-nohigh">Animal</h4>
       </div>
-      <div class="col" ng-click="showEditReportPopup('Incident')">
+      <div class="col col-33" ng-click="showEditReportPopup('Incident')">
         <img ng-src="./img/buttons/report-incident-btn.png" height="70px"/>
         <h4 class="stable h-nohigh">Incident</h4>
       </div>
@@ -165,7 +166,7 @@
       <!--mapping type to icon name-->
       <img ng-src="./img/buttons/report-{{newReport.type}}-btn.png" alt="" height="80px"/>
       <h4 class="h-nohigh">{{newReport.type}}</h4>
-      <textarea class="report-edit-textarea" rows="3" ng-model="newReport.description" placeholder="Description..."></textarea>
+      <textarea class="report-edit-textarea" rows="2" ng-model="newReport.description" placeholder="Description..."></textarea>
     </div>
     <button id="top-report-edit-btn" class="button button-icon icon top-report-btn"></button>
   </script>

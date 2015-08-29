@@ -60,6 +60,7 @@ body {
   background-size: 50px !important;
   width: 50px;
   height: 50px;
+  margin-top: -10px;
   margin-left: 15px;
 }
 
@@ -222,8 +223,8 @@ body {
 .report-edit-popup .popup .popup-buttons {
   border-radius: 5px;
   background: #1ac09a;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin: 5px 5px 10px;
+  min-height: 5px;
 }
 
 .report-edit-textarea {
@@ -455,7 +456,7 @@ p.description {
 
 /*** sign in ***/
 .login-logo{
-  margin: 40px;
+  margin: 40px 40px 30px 53px;
 }
 
 .login-input {
@@ -492,3 +493,8 @@ a.link, p.link {
   max-width: 50px;
 }
 
+/*buttons*/
+.button.active, .button.activated {
+  border-color: #4c9e68;
+  background-color: #55ae6f;
+}

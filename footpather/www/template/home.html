@@ -125,7 +125,6 @@
         <button class="button button-clear button-primary" ng-click="navModal.hide()">Cancel</button>
       </ion-header-bar>
       <ion-content class="padding">
-
         <div class="list">
           <label class="item item-input">
             <span class="input-label">From:</span>
@@ -148,10 +147,11 @@
                               placeholder="Enter destination"
                               items-clicked-method="toLocSelect(callback)"></ion-autocomplete>
           </label>
-
         </div>
-        <button class="button button-full button-positive" ng-click="calculateNavigation(navigate)">Start Navigation</button>
       </ion-content>
+      <ion-footer-bar class="nav">
+        <button class="button button-full button-positive btn-nav" ng-click="calculateNavigation(navigate)">Start Navigation</button>
+      </ion-footer-bar>
     </ion-modal-view>
   </script>
 
@@ -179,7 +179,7 @@
       <h4>Report</h4>
       <!--mapping type to icon name-->
       <img ng-src="./img/buttons/{{newReport.type}}.png" alt="" height="80px"/>
-      <h4 class="h-nohigh">{{newReport.type}}</h4>
+      <h4 class="h-nohigh">{{newReport.type | uppercase }}</h4>
       <textarea class="report-edit-textarea" rows="2" ng-model="newReport.description" placeholder="Description..."></textarea>
     </div>
     <button id="top-report-edit-btn" class="button button-icon icon top-report-btn"></button>

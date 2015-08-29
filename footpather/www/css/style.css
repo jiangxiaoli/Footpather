@@ -82,9 +82,9 @@ body {
   height: 100%;
 }
 
-.scroll {
-  height: 100%;
-}
+/*.scroll {*/
+  /*height: 100%;*/
+/*}*/
 
 #find-me-btn,
 #help-me-btn,
@@ -299,9 +299,21 @@ body {
 
 #navigateModal {
   margin-top: 20px;
-  min-height: 34%;
+  min-height: 190px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+
+#navigateModal .btn-nav {
+  padding: 0;
+  margin: 0;
+  background: #f8f8f8;
+  border: none;
+  border-top: 1px solid #c5c5c5;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #1ac09a;
+  font-size: 1.1em;
 }
 
 #navigateModal .bar-header {
@@ -321,6 +333,7 @@ body {
 
 #navigateModal .scroll-content {
   padding: 0px;
+  max-height: 100px;
 }
 
 #navigateModal .scroll .item {
@@ -329,22 +342,8 @@ body {
   margin: 0 20px 0 20px;
 }
 
-#navigateModal .scroll .list:first-child {
-  border-bottom: 1px solid #eeeeee !important;
-}
-
-#navigateModal .scroll .button {
-  margin: 37px auto 0;
+.nav {
   padding: 0;
-  background: none;
-  border: none;
-  color: #1ac09a;
-  font-size: 1.3em;
-  background: #f8f8f8;
-  border-top: 1px solid #c5c5c5;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  height: 55px;
 }
 
 /*** welcome page ***/
@@ -501,7 +500,7 @@ a.link, p.link {
 }
 
 /*buttons*/
-.button.active, .button.activated {
+.login-btn.button.active, .login-btn.button.activated {
   border-color: #4c9e68;
   background-color: #55ae6f;
 }

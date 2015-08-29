@@ -50,17 +50,11 @@
   </head>
 
   <body ng-app="app" ng-controller="MainCtrl">
-  
+
     <!--side menu, only one page, no navbar, using header-->
     <ion-side-menus>
 
       <ion-side-menu-content>
-        <ion-header-bar class="bar-stable grey-hearder" ng-hide="isWelcome">
-          <button class="button button-icon icon sidebar-icon" ng-click="toggleLeft()" ng-hide="$exposeAside.active"></button>
-          <!--<h1 class="title">[App Name]</h1>-->
-          <!--<a href="/#/home" class="button button-icon ion-home"></a>-->
-        </ion-header-bar>
-
         <!--home page content goes here-->
         <ion-nav-view></ion-nav-view>
 

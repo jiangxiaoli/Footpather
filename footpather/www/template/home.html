@@ -49,7 +49,7 @@
         <h4>Registered Sex Offender</h4>
         <img class="clip-circle" ng-src="{{currOffender.photoUrl}}" alt="offender photo" height="100px"/>
         <h5 class="text-grey h-nohigh">{{currOffender.name}}</h5>
-        <p class="text-grey">{{currOffender.address}}</p>
+        <p class="text-grey">{{currOffender.address.indexOf("Unmappable") > -1 ? "No address" : currOffender.address}}</p>
       </div>
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="./img/mappin/offender.png"/>

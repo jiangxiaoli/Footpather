@@ -158,15 +158,15 @@
   <script id="templates/reportMenuPopup.html" type="text/ng-template">
     <div class="row text-center">
       <div class="col col-33" ng-click="showEditReportPopup('Suspect')">
-        <img ng-src="./img/buttons/report-suspect-btn.png" height="70px"/>
+        <img ng-src="./img/buttons/suspect.png" height="70px"/>
         <h4 class="stable h-nohigh">Suspect</h4>
       </div>
       <div class="col col-33" ng-click="showEditReportPopup('Animal')">
-        <img ng-src="./img/buttons/report-animal-btn.png" height="70px"/>
+        <img ng-src="./img/buttons/animal.png" height="70px"/>
         <h4 class="stable h-nohigh">Animal</h4>
       </div>
       <div class="col col-33" ng-click="showEditReportPopup('Incident')">
-        <img ng-src="./img/buttons/report-incident-btn.png" height="70px"/>
+        <img ng-src="./img/buttons/incident.png" height="70px"/>
         <h4 class="stable h-nohigh">Incident</h4>
       </div>
     </div>
@@ -178,7 +178,7 @@
     <div class="text-center">
       <h4>Report</h4>
       <!--mapping type to icon name-->
-      <img ng-src="./img/buttons/report-{{newReport.type}}-btn.png" alt="" height="80px"/>
+      <img ng-src="./img/buttons/{{newReport.type}}.png" alt="" height="80px"/>
       <h4 class="h-nohigh">{{newReport.type}}</h4>
       <textarea class="report-edit-textarea" rows="2" ng-model="newReport.description" placeholder="Description..."></textarea>
     </div>

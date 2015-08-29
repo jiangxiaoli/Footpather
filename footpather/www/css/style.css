@@ -306,7 +306,7 @@ body {
 
 #navigateModal .btn-nav {
   padding: 0;
-  margin: 0;
+  margin: 5px auto 0;
   background: #f8f8f8;
   border: none;
   border-top: 1px solid #c5c5c5;
@@ -333,7 +333,7 @@ body {
 
 #navigateModal .scroll-content {
   padding: 0px;
-  max-height: 100px;
+  max-height: 160px;
 }
 
 #navigateModal .scroll .item {

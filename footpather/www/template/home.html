@@ -147,11 +147,9 @@
                               placeholder="Enter destination"
                               items-clicked-method="toLocSelect(callback)"></ion-autocomplete>
           </label>
+          <button class="button button-full button-positive btn-nav" ng-model="navigate" ng-click="calculateNavigation(navigate)">Start Navigation</button>
         </div>
       </ion-content>
-      <ion-footer-bar class="nav">
-        <button class="button button-full button-positive btn-nav" ng-click="calculateNavigation(navigate)">Start Navigation</button>
-      </ion-footer-bar>
     </ion-modal-view>
   </script>
 

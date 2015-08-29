@@ -242,7 +242,7 @@ angular.module('app.controller.home', [])
       $ionicPopup.show({
         templateUrl: "templates/placePopup.html",
         cssClass: "place-popup",
-        title: "Open Now",
+        //title: "OPEN NOW",
         scope: $scope,
         buttons: [
           { text: 'Got it!' }

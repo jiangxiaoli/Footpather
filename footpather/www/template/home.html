@@ -78,8 +78,10 @@
     </marker>
     <script id="templates/placePopup.html" type="text/ng-template">
       <div class="text-center">
+        <h4>OPEN NOW</h4>
         <h4 class="h-inlinehigh">{{currPlace.name}}</h4>
-        <h5 class="h-inlinehigh text-grey">{{currPlace.vicinity}}</h5>
+        <p class="text-grey">{{currPlace.vicinity}}</p>
+        <img ng-src="./img/mappin/place.png" alt="" height="80px" />
       </div>
       <!--overlay center icon-->
       <img class="top-center-icon" ng-src="./img/mappin/place.png"/>
